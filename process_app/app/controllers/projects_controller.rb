@@ -14,7 +14,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @current_phase = @project.current_phase
+    @current_phase = @project.current_phase(params[:phase])
     @post = Post.new
 
     respond_to do |format|

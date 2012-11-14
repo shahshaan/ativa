@@ -29,6 +29,8 @@ gem 'jquery-rails'
 	gem 'paperclip'
 	gem 'aws-s3'
 	gem 'aws-sdk'
+	gem 'rmagick'
+	gem 'imagemagick'
 
 	# Using Twitter Bootstrap
 	gem 'therubyracer', :platforms => :ruby

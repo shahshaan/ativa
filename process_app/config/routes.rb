@@ -3,6 +3,8 @@ ProcessApp::Application.routes.draw do
 
   resources :projects
 
+  get 'projects/:id/:phase' => 'projects#show'
+
   
 
   # The priority is based upon order of creation:

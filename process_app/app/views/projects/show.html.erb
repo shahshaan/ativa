@@ -12,7 +12,7 @@
   			<% if phase.id == @current_phase.id %>
   				<span style="color:red;"><%= phase.type %></span>
   			<% else %>
-  				<%= phase.type %>
+  				<%= link_to phase.type, project_url(:phase => "#{phase.type.downcase}") %>
   			<% end -%>,
   			<% if phase.completed? %>
   				<%= "Completed" %>
@@ -30,6 +30,11 @@
     <p>
       <%= post.title %>
       <%= post.message %>
+      <% if post.attachment? %>
+        <%= link_to 'attachment', post.attachment.url %>
+        <%= post.attachment.content_type %>
+      <% end -%>  
+
     </p>
   <% end %>
 </p>
@@ -37,7 +42,7 @@
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>
 
-<%= form_for(@post) do |f| %>
+<%= form_for(@post, :html => {:multipart => true}) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
@@ -60,7 +65,7 @@
   </div>
   <div class="field">
     <%= f.label :attachment %><br />
-    <%= f.text_field :attachment %>
+    <%= f.file_field :attachment %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br />
