@@ -1,0 +1,3 @@
+class Creative < Phase
+	
+end

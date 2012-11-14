@@ -1,0 +1,3 @@
+class Design < Phase
+	
+end

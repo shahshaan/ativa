@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  message: MyText
+  attachment: MyString
+  user_id: 1
+  comment: false
+  phase_id: 1
+
+two:
+  title: MyString
+  message: MyText
+  attachment: MyString
+  user_id: 1
+  comment: false
+  phase_id: 1

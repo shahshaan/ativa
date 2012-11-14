@@ -1,0 +1,3 @@
+class Implementation < Phase
+	
+end
