@@ -15,6 +15,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @current_phase = @project.current_phase(params[:phase])
+    @current_user = current_user
     @post = Post.new
 
     respond_to do |format|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114182237) do
+ActiveRecord::Schema.define(:version => 20121115165452) do
 
   create_table "phases", :force => true do |t|
     t.string   "name"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(:version => 20121114182237) do
     t.text     "message"
     t.integer  "user_id"
     t.boolean  "comment"
+    t.integer  "phase_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
-    t.integer  "phase_id"
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
@@ -49,6 +49,16 @@ ActiveRecord::Schema.define(:version => 20121114182237) do
     t.datetime "updated_at",    :null => false
     t.integer  "onboarding_id"
     t.integer  "creative_id"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
 end
