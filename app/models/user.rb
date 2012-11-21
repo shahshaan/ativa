@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   validates :email, :uniqueness => true
 
+  def admin?
+  	self.type == 'Admin' ? true : false
+  end
+
 end

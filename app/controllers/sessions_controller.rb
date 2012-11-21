@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 	  user = User.find_by_email(params[:email])
 	  if user && user.authenticate(params[:password])
 	    session[:user_id] = user.id
-	    redirect_to root_url, :notice => "Logged in!"
-	  else
-	    flash.now.alert = "Your email and password combination didn't match!"
-	    redirect_to new_sessions_url, notice: "Your email and password combination didn't match!"
+	    if user.admin?
+	    	redirect_to projects_url, :notice => "Logged in!"
+	    end
+	  	else redirect_to new_sessions_url, notice: "Your email and password combination didn't match!"
 	  end
 	end
 

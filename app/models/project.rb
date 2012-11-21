@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
     design_phase = phases.where(:type => "Design").first
     development_phase = phases.where(:type => "Development").first
     implementation_phase = phases.where(:type => "Implementation").first
+    
 
     if phase != nil
       if phase == 'onboarding'
@@ -39,7 +40,14 @@ class Project < ActiveRecord::Base
   		return onboarding_phase
   	elsif creative_phase.ongoing?
   		return creative_phase
+    elsif design_phase.ongoing?
+      return design_phase
+    elsif development_phase.ongoing?
+      return development_phase
+    elsif implementation_phase.ongoing?
+      return implementation_phase
   	end
+
 
   end
 

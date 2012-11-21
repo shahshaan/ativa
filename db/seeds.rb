@@ -14,7 +14,7 @@ Admin.destroy_all
 admins = [
 			{:first_name => 'Shaan', :last_name => 'Shah', email: 'shaan@perfectsearchmedia.com'},
 			{:first_name => 'Stanton', :last_name => 'Coville', email: 'stanton@perfectsearchmedia.com'},
-			{:first_name => 'Joel', :last_name => 'Benway', email: 'shaan@perfectsearchmedia.com'}
+			{:first_name => 'Joel', :last_name => 'Benway', email: 'joel@perfectsearchmedia.com'}
 ]
 
 admins.each do |admin|     

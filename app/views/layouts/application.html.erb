@@ -7,8 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<!-- Begin Header -->
+	<div class="navbar navbar-fixed-top">
+	  <div class="navbar-inner">
+	    <div class="container">
+	    	<%= link_to "Ativa", root_url, :class => "brand" %>
+        	<ul class="nav">
+        		<li class="span8"></li>
+          		<!-- <li class="active"><a href="#">Home</a></li> -->
+          		<li><%= @current_user != nil ? link_to('Account', user_url(@current_user.id)) : ""  %></li>
+          		<li><%= link_to "Logout", sessions_url, :method => :destroy %></li>
+        	</ul>
+	    </div>
+	  </div>
+	</div>
 
-<%= yield %>
+	<!-- End Header -->
+
+	<!-- Begin Side Nav -->
+	<div class="sideNav">
+	    <% if @current_phase.present? %>
+	    	<h5><%= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true) %></h5>
+	    	<h5>Web logins</h5>
+	    	<h5>Development link</h5>
+	    <% end %>
+
+	</div>
+	<!-- End Side Nav -->
+
+	<!-- Begin Main Content -->
+	<div class="content">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

@@ -1,4 +1,7 @@
 class ProjectsController < ApplicationController
+
+  before_filter :require_admin
+
   # GET /projects
   # GET /projects.json
   def index
@@ -17,6 +20,10 @@ class ProjectsController < ApplicationController
     @current_phase = @project.current_phase(params[:phase])
     @current_user = current_user
     @post = Post.new
+    @posts = @current_phase.posts.sort! { |a,b| b.updated_at <=> a.updated_at }
+    @upload = params[:upload]
+    @page = params[:page]
+    @page = 'phase'
 
     respond_to do |format|
       format.html # show.html.erb

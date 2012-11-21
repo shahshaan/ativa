@@ -1,0 +1,51 @@
+
+<h2>
+  <%= @current_phase.type.capitalize %> Phase
+</h2>
+
+<% if @upload == 'true'%>
+  <%= form_for(@post, :html => {:multipart => true}) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @post.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_field :title, :class => "input-xlarge", :placeholder => (:title).capitalize%>
+      <label class="checkbox inline">
+        <input type="checkbox", name="post[comment]">Allow comments?
+      </label>
+    </div>
+    <div class="field">
+      <%= f.text_area :message, :rows => 4, :class => "input-xxlarge", :placeholder => "Type your message here."%>
+    </div>
+    <div class="field">
+      <%= f.file_field :attachment, :class => "input-file uniform_on", :id => "fileInput" %>
+    </div>
+    <!-- Hidden fields -->
+      <%= f.hidden_field :phase_id, :value => @current_phase.id %>
+      <%= f.hidden_field :user_id, :value => @current_user.id %>
+    <!-- end -->
+    <div class="actions">
+      <%= f.submit "Upload" %>
+    </div>
+  <% end %>
+<% end %>
+
+<p>
+  <% @posts.each do |post| %>
+    <h5><%= post.title.capitalize %> <small>(<%= User.find(post.user_id).first_name unless post.user_id == nil %>)</small></h5>
+    <p><%= post.message %></p>
+      <% if post.attachment? %>
+        <%= link_to post.attachment.original_filename, post.attachment.url %>
+      <% end %>  
+    </p>
+  <% end %>
+</p>

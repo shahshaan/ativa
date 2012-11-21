@@ -15,6 +15,8 @@ class Post < ActiveRecord::Base
          									/^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/,
          									/^application\/(doc|docx|xls|xlsx|ppt|pptx)$/],
          								:message => "- Eek, we couldn't upload that file type (we currenlty only accept pictures, pdfs, docs, spreadsheets, and powerpoints)"
-
+    def project
+        
+    end
 
 end
