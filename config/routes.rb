@@ -1,4 +1,8 @@
 ProcessApp::Application.routes.draw do
+  resources :clients
+
+  resources :admins
+
   resources :users
 
   resources :posts

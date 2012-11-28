@@ -1,7 +1,6 @@
 
-<h2>
-  <%= @current_phase.type.capitalize %> Phase
-</h2>
+<h2><%= @current_phase.type.capitalize %> Phase</h2>
+<br />
 
 <% if @upload == 'true'%>
   <%= form_for(@post, :html => {:multipart => true}) do |f| %>
@@ -34,18 +33,40 @@
       <%= f.hidden_field :user_id, :value => @current_user.id %>
     <!-- end -->
     <div class="actions">
-      <%= f.submit "Upload" %>
+      <%= f.submit "Upload", :class => "btn btn-inverse" %>
     </div>
   <% end %>
 <% end %>
 
-<p>
+<!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
+<ul class="media-list">
   <% @posts.each do |post| %>
-    <h5><%= post.title.capitalize %> <small>(<%= User.find(post.user_id).first_name unless post.user_id == nil %>)</small></h5>
-    <p><%= post.message %></p>
-      <% if post.attachment? %>
-        <%= link_to post.attachment.original_filename, post.attachment.url %>
-      <% end %>  
-    </p>
-  <% end %>
-</p>
+  <li class="media">
+    <a class="pull-left" href="#">
+      <img class="media-object" src="http://localhost:3000/uploads/admin/avatar/10/IMG_0655.JPG" width="64">
+      <p class="pagination-centered">Shaan</p>
+    </a>
+    <div class="media-body">
+      <h4 class="media-heading"><%= post.title.capitalize %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
+      <p><%= post.message %></p>
+      <p>
+        <% if post.attachment? %>
+          <%= link_to post.attachment.original_filename, post.attachment.url %>
+        <% end %>  
+      </p>
+    </div>
+  </li>
+    <% end %>
+</ul>
+<!-- end -->
+
+
+
+
+
+
+
+
+
+
+

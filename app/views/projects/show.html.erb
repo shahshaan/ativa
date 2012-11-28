@@ -1,33 +1,65 @@
-<div class="page-header">
-  <h1><%=t '.title', :default => @project.name %> (<%= @project.id %>)</h1>
+<!-- Left Nav Bar -->
+<div class="sideNav lead">
+  <% if @current_phase.present? %>
+    <p><%= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></p>
+    <p>Logins</p>
+    <p>Link</p>
+  <% end %>
+</div>
+<!-- end -->
+
+<div class="sideNavcontent">
+  <div class="row-fluid">
+    <div class="span12">
+      <div class="row-fluid">
+        <div class="page-header pagination-centered">
+          <h1><%=t '.title', :default => @project.name %> <small>Project ID: <%= @project.id %></small></h1>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="row-fluid">
+        <div class="span1"></div>
+        <div class="progress progress-striped success span10">
+          <div class="bar" style="width: 53.1%;"></div>
+        </div>
+        <div class="span1"></div>
+      </div>
+      <!-- end -->
+
+      <!-- The five phases -->
+      <div class="span1"></div>
+      <% @project.phases.each do |phase| %>
+        <div class="span2 pagination-centered phase">
+          <%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %>
+        </div>
+      <% end %>
+      <div class="span1"></div>
+      <!-- end -->
+
+    </div>
+
+  </div>
+
+
+  <div class="row-fluid">
+    <!-- Messages -->
+    <div class="span12">
+      <% if @page.present? %>
+        <%= render "projects/pages/phase" %>
+      <% end %>
+    </div>
+    <!-- end -->
+
+  </div>
+
+  </div>
 </div>
 
 
 
-<div class="row-fluid">
-  
-    <% @project.phases.each do |phase| %>
-      <div class="span2">
-        <i class="icon-fire icon-large"></i>
-          <% if phase.id == @current_phase.id %>
-          <%= link_to phase.type, project_url(:phase => "#{phase.type.downcase}"), :class => "btn disabled" %>
-          <div class="progress"><div class="bar bar-active" style="width: <%= phase.completion %>%;"></div></div>
-          <% else %>
-          <%= link_to phase.type, project_url(:phase => "#{phase.type.downcase}"), :class => "btn disabled" %>
-          <div class="progress"><div class="bar bar-success" style="width: <%= phase.completion %>%;"></div></div>
-          <% end %>
-        
-      </div>
-    <% end %>
-    <div class="span1"></div>
-  </div>
 
-  <p id="notice"><%= notice %></p>
 
-  <% if @page.present? %>
-    <%#= render "projects/pages/#{@page}" %>
-    <%= render "projects/pages/phase" %>
 
-  <% end %>
-</div>​
+
 

@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
   	if current_user.present? && current_user.admin?
-  	else redirect_to new_sessions_url, notice: 'You gotta work for Perfect Search Design to access this page!'
+  	else redirect_to new_sessions_url, notice: 'Please sign in'
   	end
   end
 
