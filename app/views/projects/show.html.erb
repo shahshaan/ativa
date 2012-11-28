@@ -1,11 +1,10 @@
 <!-- Left Nav Bar -->
 <div class="sideNav lead">
+    <ul><%= link_to "Overview", project_url(:page => "overview") %></ul>
   <% if @current_phase.present? %>
     <ul>Phase</ul>
       <% @project.phases.each do |phase| %>
-        <li>
-          <%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %>
-        </li>
+        <li><%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %></li>
       <% end %>
     <ul>Logins</ul>
     <ul>Link</ul>
@@ -52,7 +51,7 @@
     <!-- Messages -->
     <div class="span12">
       <% if @page.present? %>
-        <%= render "projects/pages/phase" %>
+        <%= render "projects/pages/#{@page}" %>
       <% end %>
     </div>
     <!-- end -->

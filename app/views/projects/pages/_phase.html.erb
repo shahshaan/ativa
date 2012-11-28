@@ -1,5 +1,5 @@
 
-<h2><%= @current_phase.type.capitalize %> Phase</h2>
+<h2><%= @current_phase.type.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
 <br />
 
 <% if @upload == 'true'%>
@@ -38,6 +38,8 @@
   <% end %>
 <% end %>
 
+<br>
+
 <!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
 <ul class="media-list">
   <% @posts.each do |post| %>
@@ -52,6 +54,8 @@
       <p>
         <% if post.attachment? %>
           <%= link_to post.attachment.original_filename, post.attachment.url %>
+          <%= link_to "View", project_url(:page => "view") %>
+          <%= link_to 'Download'%>
         <% end %>  
       </p>
     </div>

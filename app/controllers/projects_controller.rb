@@ -25,6 +25,12 @@ class ProjectsController < ApplicationController
     @page = params[:page]
     @page = 'phase'
 
+    if params[:page] != nil
+      @page = params[:page]
+    else
+      @page = 'phase'
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @project }
