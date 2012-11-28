@@ -1,9 +1,15 @@
 <!-- Left Nav Bar -->
 <div class="sideNav lead">
   <% if @current_phase.present? %>
-    <p><%= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></p>
-    <p>Logins</p>
-    <p>Link</p>
+    <ul>Phase</ul>
+      <% @project.phases.each do |phase| %>
+        <li>
+          <%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %>
+        </li>
+      <% end %>
+    <ul>Logins</ul>
+    <ul>Link</ul>
+    <ul><%= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></ul>
   <% end %>
 </div>
 <!-- end -->

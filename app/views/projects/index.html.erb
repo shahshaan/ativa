@@ -2,7 +2,82 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
-<table class="table table-striped">
+
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span10"><h2>Active Projects<small> Add project</small></h2></div>
+  <div class="span1"></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="span6">Project Name</th>
+          <th  class="span6">Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="<%= root_url %>">Cogent Data Solutions</a></td>
+          <td>11/12/12</td>
+        </tr>
+        <tr>
+          <td><a href="<%= root_url %>">The Big Montage</a></td>
+          <td>11/12/12</td>
+        </tr>
+        <tr>
+          <td><a href="<%= root_url %>">Soul'd</a></td>
+          <td>11/12/12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span2"></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span10"><h2>Completed Projects</h2></div>
+  <div class="span1"></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span2"></div>
+  <div class="span8">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="span6">Project Name</th>
+          <th  class="span6">Last Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="<%= root_url %>">Derick Dermatology</a></td>
+          <td>11/12/12</td>
+        </tr>
+        <tr>
+          <td><a href="<%= root_url %>">Shalewater Solutions</a></td>
+          <td>11/12/12</td>
+        </tr>
+        <tr>
+          <td><a href="<%= root_url %>">LAX Camp</a></td>
+          <td>11/12/12</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="span2"></div>
+</div>
+
+
+
+
+
+<table class="table table-bordered table-hover">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>

@@ -1,28 +1,63 @@
 <div id="loginbox">
-<h1>Sign In </h1>
+
+
 <p id="notice"><%= notice %></p>
 
-<%= form_tag sessions_url do %>
-<div class="input">
-	<p><%= label_tag :email %></p>
-	<div class="field">
-		<%= text_field_tag :email %>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="row-fluid">
+	<div class="span4"></div>
+	<div class="span4">
+		<h1 class="pagination-centered">Sign In</h1>
 	</div>
+	<div class="span4"></div>
 </div>
-<!--input end-->	
-<div class="input">
-	<p><%= label_tag :password %></p>
-	<div class="field">
-		<%= password_field_tag :password %>
-	</div>
+
+<div>
+	<%= form_tag sessions_url, :class => "form", :style => "" do %>
+
+		<div class="row-fluid">
+			<div class="span4"></div>
+			<div class="span4">
+				<div class="control-group">
+					<%#= label_tag :email, "email", :class => "control-label" %>
+					<div class="controls">
+						<%= text_field_tag :email, "email", :placeholder => "email", :value => "", :class => "span12" %>
+					</div>
+				</div>
+			</div>
+			<div class="span4"></div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4"></div>
+			<div class="span4">
+				<div class="control-group">
+					<%#= label_tag :password, "password", :class => "control-label" %>
+					<div class="controls">
+						<%= password_field_tag :password, "password", :placeholder => "password", :value => "", :class => "span12" %>
+					</div>
+				</div>
+			</div>
+			<div class="span4"></div>
+		</div>
+
+		<div class="row-fluid">
+			<div class="span4"></div>
+			<div class="span4">
+				<div class="submitbox">
+					<div class="actions">
+						<%= submit_tag 'Sign In', :class => "btn btn-block btn-primary btn-large" %>
+					</div>
+				</div>
+			</div>
+			<div class="span4"></div>
+		</div>
+
+	<%end%>
 </div>
-<!--input end-->
-<div class="submitbox">
-	<div class="actions">
-		<%= submit_tag 'Sign In' %>
-	</div>
-</div>
-<!--submitbox end-->
-<%end%>
-</div>
-<!--formcontent end-->

@@ -19,11 +19,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="#">Ativa</a>
+      <a class="brand" href="<%= root_url %>">Ativa</a>
       <div class="nav-collapse pull-right">
         <ul class="nav">
           <li><%= link_to "My Account" %></li>
-          <li><%= link_to "Logout" %></li>
+          <li><%= link_to "Logout", sessions_url, :method => :destroy %></li>
         </ul>
       </div>
     </div>
