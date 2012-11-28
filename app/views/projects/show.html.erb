@@ -1,15 +1,14 @@
 <!-- Left Nav Bar -->
 <div class="sideNav lead">
     <ul><%= link_to "Overview", project_url(:page => "overview") %></ul>
-  <% if @current_phase.present? %>
     <ul>Phase</ul>
-      <% @project.phases.each do |phase| %>
-        <li><%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %></li>
-      <% end %>
+	  	<% @phases.each do |phase| %>
+			<li><%= link_to phase, project_url(:page => "phase", :phase => phase) %></li>
+		<% end -%>
     <ul>Logins</ul>
     <ul>Link</ul>
-    <ul><%= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></ul>
-  <% end %>
+    <ul><%#= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></ul>
+
 </div>
 <!-- end -->
 
@@ -34,14 +33,12 @@
 
       <!-- The five phases -->
       <div class="span1"></div>
-      <% @project.phases.each do |phase| %>
-        <div class="span2 pagination-centered phase">
-          <%= link_to phase.type.downcase, project_url(:phase => "#{phase.type.downcase}") %>
-        </div>
-      <% end %>
+      	<% @phases.each do |phase| %>
+			<div class="span2 pagination-centered phase"><%= phase %></div>
+		<% end -%>
+
       <div class="span1"></div>
       <!-- end -->
-
     </div>
 
   </div>
@@ -65,6 +62,20 @@
 
 
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @project.active %>
+</p>
 
 
-
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>

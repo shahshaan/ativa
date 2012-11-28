@@ -1,42 +1,75 @@
 
-<h2><%= @current_phase.type.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
+
+<h2><%= @phase.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
+
+<% if @upload == 'true' %>
+  <%= form_tag posts_url, :class => "form", :html => {:multipart => true} do %>
+    <ul class="media-list">
+      <li class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object img-rounded" src="<%= current_user.avatar_url %>" width="64" height="64">
+          <p class="pagination-centered"><%= current_user.first_name %></p>
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><%= "Message Header" %> <small><%= Post.last.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p>
+            <%#= link_to post.attachment.original_filename, post.attachment.url %>
+            <%#= link_to "View", project_url(:page => "view") %>
+            <%#= link_to 'Download'%> 
+          </p>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
+<!--
+
+<h2><%#= @current_phase.type.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
 <br />
 
-<% if @upload == 'true'%>
-  <%= form_for(@post, :html => {:multipart => true}) do |f| %>
-    <% if @post.errors.any? %>
+<%# if @upload == 'true'%>
+  <%#= form_for(@post, :html => {:multipart => true}) do |f| %>
+    <%# if @post.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
         <ul>
-        <% @post.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
+        <%# @post.errors.full_messages.each do |msg| %>
+          <li><%#= msg %></li>
+        <%# end %>
         </ul>
       </div>
-    <% end %>
+    <%# end %>
 
     <div class="field">
-      <%= f.text_field :title, :class => "input-xlarge", :placeholder => (:title).capitalize%>
+      <%#= f.text_field :title, :class => "input-xlarge", :placeholder => (:title).capitalize%>
       <label class="checkbox inline">
         <input type="checkbox", name="post[comment]">Allow comments?
       </label>
     </div>
     <div class="field">
-      <%= f.text_area :message, :rows => 4, :class => "input-xxlarge", :placeholder => "Type your message here."%>
+      <%#= f.text_area :message, :rows => 4, :class => "input-xxlarge", :placeholder => "Type your message here."%>
     </div>
     <div class="field">
-      <%= f.file_field :attachment, :class => "input-file uniform_on", :id => "fileInput" %>
+      <%#= f.file_field :attachment, :class => "input-file uniform_on", :id => "fileInput" %>
     </div>
-    <!-- Hidden fields -->
-      <%= f.hidden_field :phase_id, :value => @current_phase.id %>
-      <%= f.hidden_field :user_id, :value => @current_user.id %>
-    <!-- end -->
     <div class="actions">
-      <%= f.submit "Upload", :class => "btn btn-inverse" %>
+      <%#= f.submit "Upload", :class => "btn btn-inverse" %>
     </div>
-  <% end %>
-<% end %>
+  <%# end %>
+<%# end %>
+
+
+-->
+
+
 
 <br>
 
@@ -46,11 +79,12 @@
   <li class="media">
     <a class="pull-left" href="#">
       <img class="media-object img-rounded" src="http://localhost:3000/uploads/admin/avatar/10/IMG_0655.JPG" width="64" height="64">
-      <p class="pagination-centered">Shaan</p>
+      <p class="pagination-centered"><%= post.user.first_name %></p>
     </a>
     <div class="media-body">
       <h4 class="media-heading"><%= post.title.capitalize %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
       <p><%= post.message %></p>
+      <p><%= Project.find(post.project_id).name %> <%=  post.phase %></p>
       <p>
         <% if post.attachment? %>
           <%= link_to post.attachment.original_filename, post.attachment.url %>
@@ -63,6 +97,7 @@
     <% end %>
 </ul>
 <!-- end -->
+
 
 
 

@@ -1,11 +1,12 @@
 class ProjectsController < ApplicationController
-
-  before_filter :require_admin
-
   # GET /projects
   # GET /projects.json
   def index
     @projects = Project.all
+
+    projects = Project.scoped
+    @active_projects = projects.where(:active => true)
+    @completed_projects = projects.where(:active => false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,19 +18,16 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @project = Project.find(params[:id])
-    @current_phase = @project.current_phase(params[:phase])
-    @current_user = current_user
-    @post = Post.new
-    @posts = @current_phase.posts.sort! { |a,b| b.updated_at <=> a.updated_at }
-    @upload = params[:upload]
+    @phases = ['onboarding','creative','design','development','implementation']
     @page = params[:page]
-    @page = 'phase'
-
-    if params[:page] != nil
-      @page = params[:page]
-    else
-      @page = 'phase'
+    @phase = params[:phase]
+    @posts = @project.posts
+    # @phase.present? ? @posts == @posts.where(:phase => @phase, :project_id => @project.id) : nil
+    if @phase.present?
+      @posts = @posts.where(:phase => @phase)
     end
+    @post = Post.new
+    @upload = params[:upload]
 
     respond_to do |format|
       format.html # show.html.erb
@@ -60,14 +58,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        project = Project.last
-
-        Onboarding.create({:project_id => project.id})
-        Creative.create({:project_id => project.id})
-        Design.create({:project_id => project.id})
-        Development.create({:project_id => project.id})
-        Implementation.create({:project_id => project.id})
-        
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
       else

@@ -11,33 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121155300) do
-
-  create_table "phases", :force => true do |t|
-    t.string   "name"
-    t.string   "type"
-    t.integer  "completion"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "project_id"
-  end
+ActiveRecord::Schema.define(:version => 20121128213633) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "message"
     t.integer  "user_id"
     t.boolean  "comment"
-    t.integer  "phase_id"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.integer  "attachment_file_size"
     t.datetime "attachment_updated_at"
+    t.integer  "project_id"
+    t.string   "phase"
   end
 
   create_table "projects", :force => true do |t|
     t.string   "name"
+    t.boolean  "active"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -2,8 +2,8 @@
 
 one:
   name: MyString
-  phase: MyString
+  active: false
 
 two:
   name: MyString
-  phase: MyString
+  active: false
