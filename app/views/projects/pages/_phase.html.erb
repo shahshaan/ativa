@@ -37,48 +37,6 @@
   <% end %>
 <% end %>
 
-<!--
-
-<h2><%#= @current_phase.type.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
-<br />
-
-<%# if @upload == 'true'%>
-  <%#= form_for(@post, :html => {:multipart => true}) do |f| %>
-    <%# if @post.errors.any? %>
-      <div id="error_explanation">
-        <h2><%#= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-        <ul>
-        <%# @post.errors.full_messages.each do |msg| %>
-          <li><%#= msg %></li>
-        <%# end %>
-        </ul>
-      </div>
-    <%# end %>
-
-    <div class="field">
-      <%#= f.text_field :title, :class => "input-xlarge", :placeholder => (:title).capitalize%>
-      <label class="checkbox inline">
-        <input type="checkbox", name="post[comment]">Allow comments?
-      </label>
-    </div>
-    <div class="field">
-      <%#= f.text_area :message, :rows => 4, :class => "input-xxlarge", :placeholder => "Type your message here."%>
-    </div>
-    <div class="field">
-      <%#= f.file_field :attachment, :class => "input-file uniform_on", :id => "fileInput" %>
-    </div>
-    <div class="actions">
-      <%#= f.submit "Upload", :class => "btn btn-inverse" %>
-    </div>
-  <%# end %>
-<%# end %>
-
-
--->
-
-
-
 <br>
 
 <!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->

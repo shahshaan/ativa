@@ -21,16 +21,23 @@ class ProjectsController < ApplicationController
     @phases = ['onboarding','creative','design','development','implementation']
     @page = params[:page]
     @phase = params[:phase]
-    @posts = @project.posts
-    # @phase.present? ? @posts == @posts.where(:phase => @phase, :project_id => @project.id) : nil
+    @posts = Post.where(:project_id => @project.id)
+
     if @phase.present?
       @posts = @posts.where(:phase => @phase).sort! { |a,b| b.updated_at <=> a.updated_at }
-    else
-      @posts = @posts.sort! { |a,b| b.updated_at <=> a.updated_at }
     end
+
     @post = Post.new
     @upload = params[:upload]
     @view_post = Post.find(params[:post_id]) unless params[:post_id].nil?
+
+    if @page == 'overview'
+      today = Time.now
+      @posts_today = @posts.where(["created_at >= ? AND created_at <= ?", today.beginning_of_day, today.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
+
+      yesterday = today - 1.day
+      @posts_yesterday = @posts.where(["updated_at >= ? AND updated_at <= ?", yesterday.beginning_of_day, yesterday.end_of_day])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -50,6 +57,7 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1/edit
+
   def edit
     @project = Project.find(params[:id])
   end
