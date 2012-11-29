@@ -1,31 +1,39 @@
 
 
-<h2><%= @phase.capitalize %> Phase <small><%= link_to "upload" %></small></h2>
+<h2><%= @phase.capitalize %> Phase <small><%= link_to "upload", project_url(:page => @page, :phase => @phase, :upload => 'true') %></small></h2>
 
 <% if @upload == 'true' %>
-  <%= form_tag posts_url, :class => "form", :html => {:multipart => true} do %>
+  <%= form_for(@post, :class => "form", :html => {:multipart => true}) do |f| %>
     <ul class="media-list">
       <li class="media">
-        <a class="pull-left" href="#">
+        <a class="pull-left" href="#" style="padding-top:12px;">
           <img class="media-object img-rounded" src="<%= current_user.avatar_url %>" width="64" height="64">
           <p class="pagination-centered"><%= current_user.first_name %></p>
         </a>
         <div class="media-body">
-          <h4 class="media-heading"><%= "Message Header" %> <small><%= Post.last.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <p>
-            <%#= link_to post.attachment.original_filename, post.attachment.url %>
-            <%#= link_to "View", project_url(:page => "view") %>
-            <%#= link_to 'Download'%> 
-          </p>
+          <h4 class="media-heading">
+            <div class="control-group">
+              <div class="controls span12">
+                <%= f.text_field :title, :placeholder => "Message Title", :value => "", :class => "span2" %>
+                <small><%= Time.now.strftime("%m/%d/%y at %I:%M%P") %></small>
+              </div>
+            </div>
+          </h4>
+          <%= f.text_area :message,:rows => 4, :class => "span12", :placeholder => "Type your message here..."%>
+          <%= f.file_field :attachment, :class => "", :id => "" %>
+          <label class="checkbox">
+            <input type="checkbox" value="" name="private">
+            Keep this private—client will not see this
+          </label>
+          <div class="actions">
+            <%= f.submit "Post Message", :class => "btn btn-inverse", :phase => @phase %>
+          </div>
         </div>
       </li>
     </ul>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :phase, :value => @phase %>
+    <%= f.hidden_field :project_id, :value => @project.id %>
   <% end %>
 <% end %>
 
@@ -84,11 +92,10 @@
     <div class="media-body">
       <h4 class="media-heading"><%= post.title.capitalize %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
       <p><%= post.message %></p>
-      <p><%= Project.find(post.project_id).name %> <%=  post.phase %></p>
       <p>
         <% if post.attachment? %>
           <%= link_to post.attachment.original_filename, post.attachment.url %>
-          <%= link_to "View", project_url(:page => "view") %>
+          <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
           <%= link_to 'Download'%>
         <% end %>  
       </p>

@@ -24,10 +24,13 @@ class ProjectsController < ApplicationController
     @posts = @project.posts
     # @phase.present? ? @posts == @posts.where(:phase => @phase, :project_id => @project.id) : nil
     if @phase.present?
-      @posts = @posts.where(:phase => @phase)
+      @posts = @posts.where(:phase => @phase).sort! { |a,b| b.updated_at <=> a.updated_at }
+    else
+      @posts = @posts.sort! { |a,b| b.updated_at <=> a.updated_at }
     end
     @post = Post.new
     @upload = params[:upload]
+    @view_post = Post.find(params[:post_id]) unless params[:post_id].nil?
 
     respond_to do |format|
       format.html # show.html.erb

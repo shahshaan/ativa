@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128213633) do
+ActiveRecord::Schema.define(:version => 20121129162044) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "message"
     t.integer  "user_id"
-    t.boolean  "comment"
+    t.boolean  "private"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
     t.string   "attachment_file_name"
