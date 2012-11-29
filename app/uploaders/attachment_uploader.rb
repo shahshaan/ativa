@@ -1,5 +1,16 @@
 # encoding: utf-8
 
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider => 'AWS',
+    :aws_access_key_id => ENV['AMAZONS3_ACCESS_KEY'],
+    :aws_secret_access_key => ENV['AMAZONS3_SECRET_ACCESS_KEY']
+  }
+
+  config.fog_directory = 'perfectsearchdesign'
+
+end
+
 class AttachmentUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -11,8 +22,8 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:

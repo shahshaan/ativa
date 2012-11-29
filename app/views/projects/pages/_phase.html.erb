@@ -20,7 +20,7 @@
             </div>
           </h4>
           <%= f.text_area :message,:rows => 4, :class => "span12", :placeholder => "Type your message here..."%>
-          <%= f.file_field :attachment, :class => "", :id => "" %>
+          <%= f.file_field :attachment %>
           <label class="checkbox">
             <input type="checkbox" value="" name="private">
             Keep this private—client will not see this
@@ -93,8 +93,8 @@
       <h4 class="media-heading"><%= post.title.capitalize %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
       <p><%= post.message %></p>
       <p>
-        <% if post.attachment? %>
-          <%= link_to post.attachment.original_filename, post.attachment.url %>
+        <% if post.attachment_url.present? %>
+          <%= link_to post.attachment_file_name, post.attachment_url %>
           <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
           <%= link_to 'Download'%>
         <% end %>  

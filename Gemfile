@@ -35,6 +35,7 @@ gem 'jquery-rails'
 	gem 'aws-sdk'
 	gem 'rmagick'
 	gem 'carrierwave'
+	gem "fog", "~> 1.3.1"
 
 	# Using Twitter Bootstrap
 	gem 'therubyracer', :platforms => :ruby
