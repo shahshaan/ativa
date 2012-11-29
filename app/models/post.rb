@@ -8,9 +8,10 @@ class Post < ActiveRecord::Base
   mount_uploader :attachment, AttachmentUploader
 
   def snippet
-
-  	self[0, 80] + "..."
-  	
+    title_size = self.title.size * 1.2
+    message_size = 120 - title_size
+    snippet = self.message.truncate(message_size, :separator => ' ')
+    return snippet
   end
 
   def today
