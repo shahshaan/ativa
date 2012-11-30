@@ -12,9 +12,7 @@ module ProjectsHelper
 		elsif phase == 'implementation'
 			level = 94
 		end
-
 		return level
-
 	end
 
 end
