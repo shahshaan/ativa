@@ -49,7 +49,9 @@
       <!-- The five phases -->
       <div class="span1"></div>
       	<% @phases.each do |phase| %>
-			<div class="span2 pagination-centered phase"><%= link_to phase, project_url(:page => "phase", :phase => phase) %></div>
+			<div class="span2 pagination-centered phase">
+         <div class="<%= if @phase == phase then 'active' end %>"><%= link_to phase, project_url(:page => "phase", :phase => phase) %></div>     
+      </div>
 		<% end -%>
 
       <div class="span1"></div>

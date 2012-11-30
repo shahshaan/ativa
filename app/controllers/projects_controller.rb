@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
     @posts = Post.where(:project_id => @project.id)
 
-    if @phase.present?
+    if params[:phase].present?
       @posts = @posts.where(:phase => @phase).sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 
@@ -47,7 +47,10 @@ class ProjectsController < ApplicationController
       @posts_today = @posts.where(["created_at >= ? AND created_at <= ?", today.beginning_of_day, today.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
 
       yesterday = today - 1.day
-      @posts_yesterday = @posts.where(["updated_at >= ? AND updated_at <= ?", yesterday.beginning_of_day, yesterday.end_of_day])
+      @posts_yesterday = @posts.where(["updated_at >= ? AND updated_at <= ?", yesterday.beginning_of_day, yesterday.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
+
+      older_than_yesterday = yesterday - 1.day
+      @posts_older_than_yesterday = @posts.where(["updated_at <= ?", older_than_yesterday.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 
     if params[:current_phase].present?
