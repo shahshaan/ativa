@@ -1,8 +1,10 @@
 class Project < ActiveRecord::Base
 
-  attr_accessible :active, :name
+  attr_accessible :active, :name, :current_phase
 
   has_many :posts
+
+
   
 
 

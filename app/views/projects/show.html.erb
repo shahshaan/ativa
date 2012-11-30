@@ -12,20 +12,35 @@
 </div>
 <!-- end -->
 
+<!-- Title and phase drop down -->
 <div class="sideNavcontent">
   <div class="row-fluid">
     <div class="span12">
       <div class="row-fluid">
         <div class="page-header pagination-centered">
           <h1><%=t '.title', :default => @project.name %> <small>Project ID: <%= @project.id %></small></h1>
+          <div class="">
+            <div class="btn-group">
+              <button class="btn dropdown-toggle" data-toggle="dropdown">
+                Phase
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <% @phases.each do |phase| %>
+                  <li><%= link_to phase, project_url(:current_phase => phase) %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- end -->
 
       <!-- Progress bar -->
       <div class="row-fluid">
         <div class="span1"></div>
         <div class="progress progress-striped success span10">
-          <div class="bar" style="width: 53.1%;"></div>
+          <div class="bar" style="width: <%= progress_bar_level(@project.current_phase) %>%;"></div>
         </div>
         <div class="span1"></div>
       </div>
@@ -40,7 +55,7 @@
       <div class="span1"></div>
       <!-- end -->
     </div>
-
+<%= @asdf %>
   </div>
 
 

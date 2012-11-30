@@ -19,8 +19,13 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @phases = ['onboarding','creative','design','development','implementation']
+
     @page = params[:page]
+    @page = 'phase' unless @page.present?
+
     @phase = params[:phase]
+    @phase = params[:current_phase] unless @phase.present?
+
     @posts = Post.where(:project_id => @project.id)
 
     if @phase.present?
@@ -38,6 +43,10 @@ class ProjectsController < ApplicationController
       yesterday = today - 1.day
       @posts_yesterday = @posts.where(["updated_at >= ? AND updated_at <= ?", yesterday.beginning_of_day, yesterday.end_of_day])
     end
+
+    if params[:current_phase].present?
+       @project.update_attributes(:current_phase => params[:current_phase])
+    end 
 
     respond_to do |format|
       format.html # show.html.erb
