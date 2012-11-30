@@ -23,8 +23,14 @@ class ProjectsController < ApplicationController
     @page = params[:page]
     @page = 'phase' unless @page.present?
 
-    @phase = params[:phase]
-    @phase = params[:current_phase] unless @phase.present?
+    if params[:phase].present?
+      @phase = params[:phase]
+    elsif params[:current_phase].present?
+      @phase = params[:current_phase]
+    else
+      @phase = @project.current_phase
+    end
+
 
     @posts = Post.where(:project_id => @project.id)
 
