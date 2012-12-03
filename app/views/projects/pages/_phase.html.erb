@@ -17,15 +17,16 @@
   <% @posts.each do |post| %>
   <li class="media">
     <a class="pull-left" href="#">
-      <img class="media-object img-rounded" src="http://localhost:3000/uploads/admin/avatar/10/IMG_0655.JPG" width="64" height="64">
+      <img class="media-object img-rounded pagination-centered" src="http://localhost:3000/uploads/admin/avatar/10/IMG_0655.JPG" width="64" height="64">
       <p class="pagination-centered"><%= post.user.first_name %></p>
     </a>
     <div class="media-body">
-      <h4 class="media-heading"><%= post.title.capitalize %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
+      <h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4>
       <p><%= post.message %></p>
       <p>
-        <% if post.attachment_url.present? %>
-          <%= link_to post.attachment_file_name, post.attachment_url %>
+        <% if post.attachment? %>
+          <%= link_to post.attachment.file.filename, post.attachment_url %>
+          |
           <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
           <%= link_to 'Download'%>
         <% end %>  

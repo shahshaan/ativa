@@ -1,4 +1,4 @@
-<h2>Project Overview<small><%= link_to " upload" %></small></h2>
+<h2>Project Overview <small><%= link_to "upload", project_url(:page => @page, :upload => 'true') %></small></h2>
 <br>
 
 <% if @upload == 'true' %>
@@ -8,6 +8,7 @@
     </div>
   </div>
 <% end %>
+
 
 <% if @posts_today.present? %>
   <table class="table table-bordered table-hover">
@@ -21,12 +22,11 @@
           <td class="span7">
             <a href="#">
               <%= post.title %>
-              <small class="muted"> <%#= post.message[0, 80] + "..." %></small>
               <small class="muted"> <%= post.snippet %></small>
 
             </a>
           </td>
-          <td class="span3"><%= link_to post.attachment.file.filename, "" %></td>
+          <td class="span3"><%= link_to post.attachment_snippet, "" %></td>
         </tr>
       <% end %>
     </tbody>
@@ -45,12 +45,10 @@
           <td class="span7">
             <a href="#">
               <%= post.title %>
-              <small class="muted"> <%#= post.message[0, 80] + "..." %></small>
               <small class="muted"> <%= post.snippet %></small>
-
             </a>
           </td>
-          <td class="span3"><%= link_to "Attachment_title.pdf", "#{}" %></td>
+          <td class="span3"><%= post.attachment_snippet %></td>
         </tr>
       <% end %>
     </tbody>

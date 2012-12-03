@@ -27,7 +27,7 @@
               </button>
               <ul class="dropdown-menu">
                 <% @phases.each do |phase| %>
-                  <li><%= link_to phase, project_url(:current_phase => phase) %></li>
+                  <li><%= link_to phase, project_url(:current_phase => phase, :phase => phase) %></li>
                 <% end %>
               </ul>
             </div>

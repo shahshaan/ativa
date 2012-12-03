@@ -11,19 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130011227) do
+ActiveRecord::Schema.define(:version => 20121203172807) do
 
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "message"
     t.integer  "user_id"
     t.boolean  "private"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
-    t.string   "attachment_file_name"
-    t.string   "attachment_content_type"
-    t.integer  "attachment_file_size"
-    t.datetime "attachment_updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer  "project_id"
     t.string   "phase"
     t.string   "attachment"
@@ -32,9 +28,10 @@ ActiveRecord::Schema.define(:version => 20121130011227) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.boolean  "active"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.string   "current_phase"
+    t.datetime "post_last_updated"
   end
 
   create_table "steps", :force => true do |t|

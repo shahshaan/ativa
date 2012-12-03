@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
 
     projects = Project.scoped
-    @active_projects = projects.where(:active => true)
+    @active_projects = projects.where(:active => true).sort! { |a,b| b.post_last_updated <=> a.post_last_updated }
     @completed_projects = projects.where(:active => false)
 
     respond_to do |format|
@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
     @posts = Post.where(:project_id => @project.id)
 
-    if params[:phase].present?
+    if @page != 'overview'
       @posts = @posts.where(:phase => @phase).sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 

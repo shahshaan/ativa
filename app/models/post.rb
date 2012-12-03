@@ -7,11 +7,24 @@ class Post < ActiveRecord::Base
 
   mount_uploader :attachment, AttachmentUploader
 
+  after_update :set_post_last_updated
+
+  def set_post_last_updated
+    project = Project.find(self.project_id)
+    project.update_attributes(:post_last_updated => self.updated_at)
+  end
+
   def snippet
     title_size = self.title.size * 1.2
     message_size = 120 - title_size
     snippet = self.message.truncate(message_size, :separator => ' ')
     return snippet
+  end
+
+  def attachment_snippet
+    text = ""
+    if self.attachment? then text = self.attachment.file.filename end
+    return text.truncate(34, :separator => "")
   end
 
   def today

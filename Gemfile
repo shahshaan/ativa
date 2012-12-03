@@ -27,6 +27,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'rake', '~> 10.0.2'
 
 # STUFF ADDED BY SHAAN
 	# Adding attachments
