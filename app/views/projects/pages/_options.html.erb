@@ -1,0 +1,52 @@
+
+
+
+<div class="row-fluid">
+  <div class="span12"><h3>Clients<small><%= link_to " Add client", project_url(:page => 'options', :add_client => 'true') %></small></h3></div>
+</div>
+
+<div class="row-fluid">
+  <div class="span1"></div>
+  <div class="span10">
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th class="span5">Name</th>
+          <th  class="span6">Email</th>
+          <th  class="span1">Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.full_name %></td>
+            <td><%= client.email %></td>
+            <td><%= link_to '<i class="icon-trash pagination-centered"></i>'.html_safe, client, method: :delete, data: { confirm: 'Are you sure? This action will destroy all posts made by this user. I would be careful if I were you...but I am not.' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="span1"></div>
+</div>
+
+
+<% if @add_client == 'true' %>
+	<%= form_for(@client, :class => "form-inline") do |f| %>
+		<div class="row-fluid">
+			<div class="span1"></div>
+			<div class="span11">
+				<%= f.text_field :first_name, :placeholder => "First Name", :value => "", :class => "span2" %>
+				<%= f.text_field :last_name, :placeholder => "Last Name", :value => "", :class => "span2" %>
+				<%= f.text_field :email, :placeholder => "Email Address", :value => "", :class => "span6" %>
+				<%= f.submit "Add Client", :class => "btn btn-inverse span2", :phase => @phase %>
+			</div>
+		</div>
+		<%= f.hidden_field :project_id, :value => @project.id %>
+	<% end %>
+<% end %>
+
+
+
+
+

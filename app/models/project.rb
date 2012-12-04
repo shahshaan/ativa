@@ -4,6 +4,8 @@ class Project < ActiveRecord::Base
 
   has_many :posts
 
+  has_many :clients
+
   before_save :default_values
 
   after_save :initial_posts

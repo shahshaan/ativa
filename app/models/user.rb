@@ -8,12 +8,26 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true
   mount_uploader :avatar, AvatarUploader
 
+  before_create :default_values
+  
+
+  def default_values
+    self.password = 'temporary'
+    self.password_confirmation = 'temporary'
+  end
+
   def admin?
   	self.type == 'Admin' ? true : false
   end
 
   def client?
   	self.type == 'Client' ? true : false
+  end
+
+  def full_name
+
+    return self.first_name + " " + self.last_name
+    
   end
 
 end

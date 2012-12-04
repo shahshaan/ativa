@@ -53,9 +53,15 @@ class ProjectsController < ApplicationController
       @posts_older_than_yesterday = @posts.where(["updated_at <= ?", older_than_yesterday.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 
-    if params[:current_phase].present?
+    if params[:current_phase].present? && current_user.admin?
        @project.update_attributes(:current_phase => params[:current_phase])
-    end 
+    end
+
+    if @page == 'options'
+      @clients = @project.clients
+      @add_client = params[:add_client]
+      @client = Client.new
+    end
 
     respond_to do |format|
       format.html # show.html.erb
@@ -122,5 +128,11 @@ class ProjectsController < ApplicationController
       format.html { redirect_to projects_url }
       format.json { head :no_content }
     end
+  end
+
+  def options
+
+
+    
   end
 end

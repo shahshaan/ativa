@@ -12,6 +12,7 @@ ProcessApp::Application.routes.draw do
   resource :sessions, :only => [:new, :create, :destroy]
   
   get 'projects/:id/:phase' => 'projects#show'
+  get 'project/:id/options' => 'projects#options', :as => :options
 
   root :to => 'projects#index', :as => :root
 

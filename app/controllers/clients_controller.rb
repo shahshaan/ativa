@@ -41,10 +41,13 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(params[:client])
+    temp_password = 'temporary'
+    @client.password ||= temp_password
+    @client.password_confirmation ||= temp_password
 
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to project_url(:id => @client.project_id, :page => 'options'), notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else
         format.html { render action: "new" }
@@ -73,11 +76,30 @@ class ClientsController < ApplicationController
   # DELETE /clients/1.json
   def destroy
     @client = Client.find(params[:id])
+
+    project_id = @client.project_id
+
+    # Destroy all the client's posts
+    clients_posts = Post.where(:user_id => @client.id)
+    clients_posts.each do |post|
+      post.destroy
+    end
+
     @client.destroy
 
     respond_to do |format|
-      format.html { redirect_to clients_url }
+      format.html { redirect_to project_url(:id => project_id, :page => 'options') }
       format.json { head :no_content }
     end
   end
 end
+
+
+
+
+
+
+
+
+
+
