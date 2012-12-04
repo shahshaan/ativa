@@ -42,6 +42,10 @@ class ProjectsController < ApplicationController
     @upload = params[:upload]
     @view_post = Post.find(params[:post_id]) unless params[:post_id].nil?
 
+    if params[:current_phase].present? && current_user.admin?
+       @project.update_attributes(:current_phase => params[:current_phase])
+    end
+
     if @page == 'overview'
       today = Time.now
       @posts_today = @posts.where(["created_at >= ? AND created_at <= ?", today.beginning_of_day, today.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
@@ -51,10 +55,6 @@ class ProjectsController < ApplicationController
 
       older_than_yesterday = yesterday - 1.day
       @posts_older_than_yesterday = @posts.where(["updated_at <= ?", older_than_yesterday.end_of_day]).sort! { |a,b| b.updated_at <=> a.updated_at }
-    end
-
-    if params[:current_phase].present? && current_user.admin?
-       @project.update_attributes(:current_phase => params[:current_phase])
     end
 
     if @page == 'options'

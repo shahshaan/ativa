@@ -41,6 +41,28 @@
       <% @posts_yesterday.each do |post| %>
         <tr>
           <td  class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
+          <td class="span1"><%= post.updated_at.strftime("%m/%d/%y") %></td>
+          <td class="span7">
+            <a href="<%=  %>">
+              <%= post.title %>
+              <small class="muted"> <%= post.snippet %></small>
+            </a>
+          </td>
+          <td class="span3"><%= post.attachment_snippet %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+<% if @posts_older_than_yesterday.present? %>
+  <table class="table table-bordered table-hover">
+    <thead></thead>
+    <div class="row-fluid lead">Older</div>
+    <tbody>
+      <% @posts_older_than_yesterday.each do |post| %>
+        <tr>
+          <td  class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
           <td class="span1"><%= post.updated_at.strftime("%I:%M%P") %></td>
           <td class="span7">
             <a href="#">
@@ -54,54 +76,3 @@
     </tbody>
   </table>
 <% end %>
-
-<table class="table table-bordered table-hover">
-  <thead>
-    <tr></tr>
-  </thead>
-  <div class="row-fluid lead">Older</div>
-  <tbody>
-    <tr>
-      <td  class="span1"><a href="<%= root_url %>">Stan</a></td>
-      <td class="span1">10:00pm</td>
-      <td class="span7"><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td class="span3"><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-    <tr>
-      <td><a href="<%= root_url %>">Shaan</a></td>
-      <td>7:13pm</td>
-      <td><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-    <tr>
-      <td><a href="<%= root_url %>">Joel</a></td>
-      <td>4:00am</td>
-      <td><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-    <tr>
-      <td  class="span1"><a href="<%= root_url %>">Stan</a></td>
-      <td class="span1">10:00pm</td>
-      <td class="span7"><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td class="span3"><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-    <tr>
-      <td><a href="<%= root_url %>">Shaan</a></td>
-      <td>7:13pm</td>
-      <td><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-    <tr>
-      <td><a href="<%= root_url %>">Joel</a></td>
-      <td>4:00am</td>
-      <td><%= link_to "Message Header ", "#" %><small class="muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore...</small></td>
-      <td><%= link_to "Attachment_title.pdf", "#{}" %></td>
-    </tr>
-  </tbody>
-</table>
