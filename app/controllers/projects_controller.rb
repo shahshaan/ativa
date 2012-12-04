@@ -61,7 +61,7 @@ class ProjectsController < ApplicationController
       @clients = @project.clients
       @add_client = params[:add_client]
       @client = Client.new
-      @status = params[:status]
+      @gmail = ENV['PSD_GMAIL_EMAIL']
     end
 
     respond_to do |format|
