@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
 
   before_save :default_values
 
-  after_save :initial_posts
+  after_create :initial_posts
   
 
   def default_values
