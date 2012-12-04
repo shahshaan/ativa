@@ -41,13 +41,13 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(params[:client])
-    temp_password = 'temporary'
-    @client.password ||= temp_password
-    @client.password_confirmation ||= temp_password
+
+    if @client.password == nil then @client.password = temp_password && @client.password_confirmation = temp_password end
+    password = @client.password
 
     respond_to do |format|
       if @client.save
-        ClientMailer.new_client(@client).deliver
+        ClientMailer.new_client(@client, password).deliver
         format.html { redirect_to project_url(:id => @client.project_id, :page => 'options'), notice: 'Client was successfully created.' }
         format.json { render json: @client, status: :created, location: @client }
       else

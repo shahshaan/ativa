@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def temp_password
+    password = SecureRandom.hex(n=5).upcase
+    return password
+  end
+
 end

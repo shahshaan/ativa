@@ -8,8 +8,7 @@ class Client < User
 	
 
 	def default_values
-	  self.password = 'temporary'
-	  self.password_confirmation = 'temporary'
+	  
 	end
 	
 end

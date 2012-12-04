@@ -1,1 +1,12 @@
-Hello new client
+<html>
+<body>
+<p>Hey <%= @client.first_name%>,</p>
+<br>
+<p>You can now log in to our project management tool, Ativa, to track the progress of the <%= @client.project.name %> project.</p>
+<ul>Sign in at <%= link_to 'Ativa', root_url %> using:
+	<li>Email: <%= @client.email %></li>
+	<li>Password: <%= @password %></li>
+</ul>
+
+</body>
+</html>
