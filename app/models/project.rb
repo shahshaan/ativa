@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   
 
   def default_values
-    self.active ||= true
+    if self.active == nil then self.active = true end
     self.current_phase ||= 'onboarding'
     self.post_last_updated ||= Time.now
   end
@@ -24,6 +24,22 @@ class Project < ActiveRecord::Base
   					:project_id => self.id,
   					:user_id => User.find_by_email("psm@perfectsearchmedia.com").id
   	)
+  end
+
+  def status
+    if self.active? then return 'Active' else return 'Completed!' end
+  end
+
+  def completed?
+    if self.active? then false else true end
+  end
+
+  def status_change(status)
+    if status == "true"
+      self.update_attributes(:active => true) 
+    elsif status == "false"
+     self.update_attributes(:active => false) 
+    end
   end
 
 end

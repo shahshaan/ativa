@@ -61,6 +61,7 @@ class ProjectsController < ApplicationController
       @clients = @project.clients
       @add_client = params[:add_client]
       @client = Client.new
+      @status = params[:status]
     end
 
     respond_to do |format|
@@ -130,9 +131,15 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def options
+  def status
+    @project = Project.find(params[:id])
 
-
+    @project.status_change(params[:active])
     
+
+    @status = params[:active]
+    
+    redirect_to project_url(:id => @project.id, :page => 'options', :status => @status)
+
   end
 end

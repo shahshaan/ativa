@@ -1,10 +1,9 @@
 
 
-
+<!-- Listing of clients and add-client option-->
 <div class="row-fluid">
   <div class="span12"><h3>Clients<small><%= link_to " Add client", project_url(:page => 'options', :add_client => 'true') %></small></h3></div>
 </div>
-
 <div class="row-fluid">
   <div class="span1"></div>
   <div class="span10">
@@ -29,8 +28,6 @@
   </div>
   <div class="span1"></div>
 </div>
-
-
 <% if @add_client == 'true' %>
 	<%= form_for(@client, :class => "form-inline") do |f| %>
 		<div class="row-fluid">
@@ -45,7 +42,24 @@
 		<%= f.hidden_field :project_id, :value => @project.id %>
 	<% end %>
 <% end %>
+<!-- Listing of clients and add-client option <end> -->
 
+<!-- Project status -->
+<div class="row-fluid">
+  <div class="span12"><h3>Project Status <small><%= @project.status %></small></h3></div>
+</div>
+
+<div class="row-fluid">
+	<div class="span3"></div>
+	<% if @project.active? %>
+		<%= button_to "Completed!", project_status_url(:active => "false", :id => @project.id), :class => "btn btn-large btn-danger span6", :method => 'POST' %>
+	<% else %>
+		<%= button_to "Activate", project_status_url(:active => "true", :id => @project.id), :class => "btn btn-large btn-primary span6", :method => 'POST' %>
+	<% end %>
+	<div class="span3"></div>
+</div>
+
+<!-- Project status <end> -->
 
 
 

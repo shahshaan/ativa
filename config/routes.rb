@@ -14,10 +14,13 @@ ProcessApp::Application.routes.draw do
   get 'projects/:id/:phase' => 'projects#show'
   get 'project/:id/options' => 'projects#options', :as => :options
 
+
   root :to => 'projects#index', :as => :root
 
   get '/logout' => 'sessions#destroy', :as => :logout
   get '/login' => 'sessions#new', :as => :login
+
+  post '/project_status' => 'projects#status', :as => :project_status
 
   
 
