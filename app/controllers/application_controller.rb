@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
   	if current_user.present?
-  		else redirect_to new_sessions_url, notice: 'Please sign in' 
+  		else redirect_to login_url, notice: 'Please sign in' 
   	end
   end
 

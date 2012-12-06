@@ -15,11 +15,13 @@
           </div>
         </h4>
         <%= f.text_area :message,:rows => 4, :class => "span12", :placeholder => "Type your message here..."%>
-        <%= f.file_field :attachment %>
-        <label class="checkbox">
-          <input type="checkbox" value="" name="private">
-          Keep this private—client will not see this
-        </label>
+
+        <%= f.file_field :attachment, :class => "span3" %>
+        <div class="input-prepend">
+          <span class="add-on">http://</span>
+          <input class="span3" id="prependedInput" type="text" name="post[url]" placeholder="www.example.com">
+        </div>
+        <label class="checkbox"><input type="checkbox" value="" name="private">Keep this private—client will not see this        </label>
         <div class="actions">
           <%= f.submit "Post Message", :class => "btn btn-inverse", :phase => @phase %>
         </div>

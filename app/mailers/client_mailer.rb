@@ -5,7 +5,7 @@ class ClientMailer < ActionMailer::Base
     def new_client(client, password)
     	@client = client
   		@password = password
-    	mail(:to => "#{client.full_name} <#{client.email}>", :subject => "Welcome to Ativa")
+    	mail(:to => "#{client.full_name} <#{client.email}>", :subject => "Welcome to Ativa | Perfect Search Design")
       end
 
 end

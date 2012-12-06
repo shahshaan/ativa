@@ -3,7 +3,7 @@
 		<h2><%= @view_post.title %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
 	</div>
 	<div class="span1">
-		<h2 class="span1"><small><%= link_to "download", @view_post.attachment_url%></small></h2>
+		<%if @view_post.attachment? %><h2 class="span1"><small><%= link_to "download", @view_post.attachment_url%></small></h2><% end %>
 	</div>	
 </div>
 
@@ -16,9 +16,11 @@
 	<br>
 <% end %>
 
-<%= @view_post.id %>
-
-<div class="row-fluid">
-	<iframe class="span12" src="<%= @view_post.attachment_url %>"  style="height: 1000px;" frameborder="0"></iframe>
-</div>
-
+<% if @view_post.attachment? %>
+	<div class="row-fluid">
+		<iframe class="span12" src="<%= @view_post.attachment_url %>"  style="height: 1000px;" frameborder="0"></iframe>
+	</div>
+<% end %>
+<% if @view_post.url.present? %>
+<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">your browser does not support IFRAMEs</iframe>
+<% end %>

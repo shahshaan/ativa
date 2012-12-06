@@ -1,15 +1,13 @@
 <!-- Left Nav Bar -->
 <div class="sideNav lead">
-    <ul><%= link_to "Overview", project_url(:page => "overview") %></ul>
+    <ul class="<%= if @page == "overview" then 'active' end %>"><%= link_to "Overview", project_url(:page => "overview") %></ul>
     <ul>Phase</ul>
-	  	<% @phases.each do |phase| %>
-			 <li><%= link_to phase, project_url(:page => "phase", :phase => phase) %></li>
-		  <% end -%>
-    <ul>Logins</ul>
-    <ul>Link</ul>
-    <ul><%= link_to 'Options', project_url(:page => 'options') %></ul>  
-    <ul><%#= link_to 'Upload Files', project_url(:phase => "#{@current_phase.type.downcase}", :upload => true, :class => "lead") %></ul>
-
+      <% @phases.each do |phase| %>
+        <li class="<%= if @page == "phase" && @phase == phase then 'active' end %>">
+          <%= link_to phase, project_url(:page => "phase", :phase => phase) %>
+        </li>
+      <% end %>
+    <ul class="<%= if @page == "options" then 'active' end %>"><%= link_to 'Options', project_url(:page => 'options') %></ul>  
 </div>
 <!-- end -->
 
@@ -49,11 +47,11 @@
 
       <!-- The five phases -->
       <div class="span1"></div>
-      	<% @phases.each do |phase| %>
-			<div class="span2 pagination-centered phase">
+        <% @phases.each do |phase| %>
+      <div class="span2 pagination-centered phase">
          <div class="<%= if @phase == phase then 'active' end %>"><%= link_to phase, project_url(:page => "phase", :phase => phase) %></div>     
       </div>
-		<% end -%>
+    <% end -%>
 
       <div class="span1"></div>
       <!-- end -->

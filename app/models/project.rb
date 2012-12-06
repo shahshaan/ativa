@@ -27,7 +27,7 @@ class Project < ActiveRecord::Base
   end
 
   def status
-    if self.active? then return 'Active' else return 'Completed!' end
+    if self.active? then return 'Ongoing' else return 'Completed!' end
   end
 
   def completed?
