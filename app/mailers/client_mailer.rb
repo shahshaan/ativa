@@ -1,5 +1,5 @@
 class ClientMailer < ActionMailer::Base
-  default from: "shaan@perfectsearchmedia.com"
+  default :from => "Shaan Shah <shaan@perfectsearchmedia.com>"
 
 
     def new_client(client, password)
@@ -9,3 +9,7 @@ class ClientMailer < ActionMailer::Base
       end
 
 end
+
+
+
+
