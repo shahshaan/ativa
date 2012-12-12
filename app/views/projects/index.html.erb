@@ -52,7 +52,7 @@
           <% @completed_projects.each do |project| %>
             <tr>
               <td><%= link_to project.name, project %></td>
-              <td>11/12/12</td>
+              <td><%= project.post_last_updated.strftime("%m/%d/%y at %I:%M%P") %></td>
             </tr>
           <% end %>
         </tbody>
@@ -61,6 +61,7 @@
     <div class="span2"></div>
   </div>
 <% end %>
+
 
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -22,8 +22,10 @@
       <%= link_to image_tag('logo.png', :width => '180px'), root_url, :class => "brand" %>
       <div class="nav-collapse pull-right">
         <ul class="nav">
-          <li><%= link_to "My Account" %></li>
+          <% if current_user.present? %>
+          <li><%= link_to "My Account", user_url(current_user.id) %></li>
           <li><%= link_to "Logout", logout_url %></li>
+          <% end %>
         </ul>
       </div>
     </div>

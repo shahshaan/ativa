@@ -7,13 +7,13 @@ class ApplicationController < ActionController::Base
 
   def require_login
   	if current_user.present?
-  		else redirect_to login_url, notice: 'Please sign in' 
+  	 else redirect_to login_url, notice: 'Please sign in' 
   	end
   end
 
   def require_admin
   	if current_user.present? && current_user.admin?
-  	else redirect_to login_url, notice: 'Please sign in'
+  	 else redirect_to login_url, notice: 'Please sign in'
   	end
   end
 
