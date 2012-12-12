@@ -1,17 +1,17 @@
 
 <br><br>
-
+<p><%= link_to 'Edit', edit_user_url(@user.id), :class => 'btn pull-right btn-large' %></p>
 <div class="row-fluid">
   <div class="span2"></div>
   <div class="span4">
     <a href="#">
-      <img src="http://dreamthemedesign.com/themes/u-design/wp-content/uploads/2010/09/photo1-e1294377153969.jpg" width="260"height="260">
+      <img src="<%= @user.avatar %>" width="260"height="260">
     </a>
   </div>
 
-  <br><br><br><br>
+  <br><br>
 
-  <div class="span6">
+  <div class="span4">
     <h2><%= @user.first_name %> <%= @user.last_name %><small><%= if @user.client? then " #{@user.project.name}" else " #{Client.last.project.name}" end %></small></h2>
     <h3><%= @user.email %></h3>
   </div>
