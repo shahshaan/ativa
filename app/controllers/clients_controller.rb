@@ -64,10 +64,10 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+        format.html { redirect_to user_url(@client.id), notice: 'Client was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_user_url(@client.id)}
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end

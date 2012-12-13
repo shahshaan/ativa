@@ -15,8 +15,8 @@
 
 <br>
 
-<div>
-  <%= form_for(@user, :class => "form form-horizontal", :method => "PUT", :html => {:multipart => true}) do |f| %>
+<div class="form form_horizontal">
+  <%= form_for(@user, :html => {:multipart => true, :class => "form form-horizontal" }) do |f| %>
 
     <div class="row-fluid">
       <div class="span4"></div>

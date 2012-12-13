@@ -60,10 +60,10 @@ class AdminsController < ApplicationController
 
     respond_to do |format|
       if @admin.update_attributes(params[:admin])
-        format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
+        format.html { redirect_to user_url(@admin.id), notice: 'Admin was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_user_url(@admin.id) }
         format.json { render json: @admin.errors, status: :unprocessable_entity }
       end
     end

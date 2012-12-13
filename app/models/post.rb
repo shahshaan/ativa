@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   
   belongs_to :user
 
+  has_many :notes
+
   mount_uploader :attachment, AttachmentUploader
 
   after_update :set_post_last_updated

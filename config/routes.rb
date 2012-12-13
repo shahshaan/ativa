@@ -4,7 +4,7 @@ ProcessApp::Application.routes.draw do
   resources :admins
 
   resources :users
-  put 'update_user' => 'users#update', :as => :update_user
+  put 'user' => 'users#update', :as => :update_user
 
   resources :posts
 
