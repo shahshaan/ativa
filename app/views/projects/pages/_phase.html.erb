@@ -17,8 +17,9 @@
   <% @posts.each do |post| %>
   <li class="media">
     <a class="pull-left" href="#">
-      <img class="media-object img-rounded pagination-centered" src="http://localhost:3000/uploads/admin/avatar/10/IMG_0655.JPG" width="64" height="64">
+      <%= image_tag post.user.avatar, :class => "media-object img-rounded pagination-centered", :width => "64", :height => "64" %>
       <p class="pagination-centered"><%= post.user.first_name %></p>
+      
     </a>
     <div class="media-body">
       <a href="<%= project_url(:page => "view", :post_id => post.id) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
@@ -36,11 +37,6 @@
     <% end %>
 </ul>
 <!-- end -->
-
-
-
-
-
 
 
 

@@ -62,6 +62,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.first_name = params[:first_name]
     @user.last_name = params[:last_name]
+    @user.email = params[:email]
+    @user.password = params[:password]
+    @user.password_confirmation
+    @user.avatar = params[:avatar]
 
 
 

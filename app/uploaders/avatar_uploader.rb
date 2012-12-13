@@ -2,6 +2,17 @@
 
 require 'carrierwave/processing/mime_types'
 
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider => 'AWS',
+    :aws_access_key_id => ENV['PSD_AS3_ACCESS_KEY'],
+    :aws_secret_access_key => ENV['PSD_AS3_SECRET_ACCESS_KEY']
+  }
+
+  config.fog_directory = ENV['PSD_AS3_BUCKET_NAME']
+
+end
+
 class AvatarUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -13,8 +24,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include Sprockets::Helpers::IsolatedHelper
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # storage :file
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
