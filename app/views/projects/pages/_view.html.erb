@@ -18,9 +18,9 @@
 
 <% if @view_post.attachment? %>
 	<div class="row-fluid">
-		<iframe class="span12" src="<%= @view_post.attachment_url %>"  style="height: 1000px;" frameborder="0"></iframe>
+		<iframe class="span12" src="<%= @view_post.attachment_url %>"  style="height: 1000px;" frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
 	</div>
 <% end %>
 <% if @view_post.url.present? %>
-<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">your browser does not support IFRAMEs</iframe>
+	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
 <% end %>
