@@ -3,11 +3,11 @@
 CarrierWave.configure do |config|
   config.fog_credentials = {
     :provider => 'AWS',
-    :aws_access_key_id => ENV['AMAZONS3_ACCESS_KEY'],
-    :aws_secret_access_key => ENV['AMAZONS3_SECRET_ACCESS_KEY']
+    :aws_access_key_id => ENV['PSD_AS3_ACCESS_KEY'],
+    :aws_secret_access_key => ENV['PSD_AS3_SECRET_ACCESS_KEY']
   }
 
-  config.fog_directory = 'perfectsearchdesign'
+  config.fog_directory = ENV['PSD_AS3_BUCKET_NAME']
 
 end
 

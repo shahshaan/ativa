@@ -17,6 +17,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @phase = params[:phase]
+
     @project = Project.find(params[:id])
     @phases = ['onboarding','creative','design','development','implementation']
 
