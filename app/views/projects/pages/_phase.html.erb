@@ -17,7 +17,7 @@
   <% @posts.each do |post| %>
   <li class="media">
     <a class="pull-left" href="#">
-      <%= image_tag post.user.avatar, :class => "media-object img-rounded pagination-centered", :width => "64", :height => "64" %>
+      <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
       <p class="pagination-centered"><%= post.user.first_name %></p>
       
     </a>
@@ -37,10 +37,5 @@
     <% end %>
 </ul>
 <!-- end -->
-
-
-
-
-
 
 
