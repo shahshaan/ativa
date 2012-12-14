@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
     @post = Post.new
     @upload = params[:upload]
-    @view_post = Post.find(params[:post_id]) unless params[:post_id].nil?
+    
 
     if params[:current_phase].present? && current_user.admin?
        @project.update_attributes(:current_phase => params[:current_phase])
@@ -64,6 +64,12 @@ class ProjectsController < ApplicationController
       @add_client = params[:add_client]
       @client = Client.new
       @gmail = ENV['PSD_GMAIL_EMAIL']
+    end
+
+    if @page == 'view'
+      @view_post = Post.find(params[:post_id])
+      @note = Note.new
+      @notes = Note.where(:post_id => @view_post.id)
     end
 
     respond_to do |format|

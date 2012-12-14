@@ -26,10 +26,10 @@
       <p><%= post.message %></p>
       <p>
         <% if post.attachment? %>
-          <%= link_to post.attachment.file.filename, post.attachment_url %>
+          <%= post.attachment.file.filename %>
           |
           <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
-          <%= link_to 'Download'%>
+          <%= link_to "Download", post.attachment_url %>
         <% end %>  
       </p>
     </div>
