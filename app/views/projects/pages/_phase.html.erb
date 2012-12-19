@@ -22,7 +22,7 @@
       
     </a>
     <div class="media-body">
-      <a href="<%= project_url(:page => "view", :post_id => post.id) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
+      <a href="<%= project_url(:page => "view", :post_id => post.id, :phase => post.phase) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
       <p><%= post.message %></p>
       <p>
         <% if post.attachment? %>

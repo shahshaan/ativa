@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   has_many :notes
 
+  has_many :attachments
+
   mount_uploader :attachment, AttachmentUploader
 
   after_update :set_post_last_updated
