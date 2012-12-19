@@ -9,15 +9,15 @@
         <h4 class="media-heading">
           <div class="control-group">
             <div class="controls span12">
-              <%= f.text_field :title, :placeholder => "Message Title", :value => "", :class => "span2" %>
+              <%= f.text_field :title, :placeholder => "Title", :value => "", :class => "span2" %>
               <small><%= Time.now.strftime("%m/%d/%y at %I:%M%P") %></small>
             </div>
           </div>
         </h4>
-        <%= f.text_area :message,:rows => 2, :class => "span12", :placeholder => "Type your message here..."%>
+        <%= f.text_area :message,:rows => 2, :class => "span12", :placeholder => "Type your description here..."%>
         <div class="row-fluid">
           <span class="input-prepend"><span class="add-on">http://</span></span>
-          <input class="span3" id="prependedInput" type="text" name="post[url]" placeholder="www.example.com">
+          <%= f.text_field :url, :placeholder => "www.example.com", :class => "span3", :id => "prependedInput" %>
           or
           <%= f.file_field :file, :class => "span3" %>
         </div>

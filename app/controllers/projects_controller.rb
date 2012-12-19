@@ -70,9 +70,12 @@ class ProjectsController < ApplicationController
       @view_post = Post.find(params[:post_id])
       @note = Note.new
       @notes = Note.where(:post_id => @view_post.id)
-      @attachment_upload = params[:attachment_upload]
-      if @attachment_upload == 'true' then @attachment_show = "false" else @attachment_show = "true" end
       @attachment = Attachment.new
+      @attachment_partial = params[:attachment_partial]
+      if @attachment_partial == 'view'
+        @attachment = Attachment.find(params[:attachment_id])
+      end
+
     end
 
     respond_to do |format|
