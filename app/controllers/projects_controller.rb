@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.json
   def show
     @phase = params[:phase]
+    @upload = "as"
 
     @project = Project.find(params[:id])
     @phases = ['onboarding','creative','design','development','implementation']
@@ -41,12 +42,12 @@ class ProjectsController < ApplicationController
     end
 
     @upload = params[:upload]
-    
+
     if @upload == 'post'
       @post = Post.new
     elsif @upload == 'subpost'
       @subpost = Subpost.new
-      @post_id = Post.find(params[:post_id]).id
+      @post = Post.find(params[:post_id])
     end
     
 
@@ -80,7 +81,7 @@ class ProjectsController < ApplicationController
       @gmail = ENV['PSD_GMAIL_EMAIL']
     end
 
-    if @page == 'view'
+    if @page == 'post_view'
       @view_post = Post.find(params[:post_id])
       @note = Note.new
       @notes = Note.where(:post_id => @view_post.id)
@@ -89,7 +90,10 @@ class ProjectsController < ApplicationController
       if @attachment_partial == 'view'
         @attachment = Attachment.find(params[:attachment_id])
       end
+    end
 
+    if @page == 'subpost_view'
+      @subpost = Subpost.find(params[:subpost_id])
     end
 
 

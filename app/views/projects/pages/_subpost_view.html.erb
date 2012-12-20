@@ -1,0 +1,28 @@
+
+
+<div class="row-fluid">
+	<div class="span11">
+		<h2><%= @subpost.title %> <small><%= @subpost.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
+	</div>
+	<div class="span1">
+		<%if @subpost.file? %><h2 class="span1"><small><%= link_to "download", @subpost.file_url%></small></h2><% end %>
+	</div>	
+</div>
+
+<% if @subpost.message.present? %>
+	<div class="row-fluid">
+		<div class="span12">
+			<%= @subpost.message %>
+		</div>
+	</div>
+	<br>
+<% end %>
+
+<% if @subpost.file? %>
+	<div class="row-fluid">
+		<iframe class="span12" src="<%= @subpost.file_url %>"  style="height: 1000px;" frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+	</div>
+<% end %>
+<% if @subpost.url.present? %>
+	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @subpost.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+<% end %>

@@ -1,0 +1,87 @@
+<div class="row-fluid">
+	<div class="span11">
+		<h2><%= @view_post.title %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
+	</div>
+	<div class="span1">
+		<%if @view_post.attachment? %><h2 class="span1"><small><%= link_to "download", @view_post.attachment_url%></small></h2><% end %>
+	</div>	
+</div>
+
+<% if @view_post.message.present? %>
+	<div class="row-fluid">
+		<div class="span12">
+			<h5><%= @view_post.message %></h5>
+		</div>
+	</div>
+	<br>
+<% end %>
+
+<!-- Tabs for each attachment -->
+  <ul class="nav nav-tabs">
+    <% @view_post.attachments.each do |attachment| %>
+      <% if attachment.id == @attachment.id then attachment_active = 'active' end %>
+      <li class="<%= attachment_active %>">
+        <%= link_to attachment.title, project_url(:page => 'view', :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'view', :attachment_id => attachment.id) %>
+      </li>
+    <% end -%>
+    <li class="<%= if @attachment_partial == 'upload' then "active" end %>"><a href="<%= project_url(:page => "view", :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'upload') %>"><i class="icon-plus"></i></a></li>
+  </ul>
+<!-- end -->
+
+<!-- Renders either the attachment view page or the add attachment uploader -->
+  <% if @attachment_partial %>
+    <div class="row-fluid">
+      <div class="span12">
+          <%= render "projects/pages/attachment_#{@attachment_partial}" %>
+      </div>
+    </div>
+  <% end %>
+<!-- end -->
+
+
+
+<% if @view_post.attachment? %>
+	<div class="row-fluid">
+		<iframe class="span12" src="<%= @view_post.attachment_url %>" height="800"frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+	</div>
+<% end %>
+<% if @view_post.url.present? %>
+	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+<% end %>
+
+<br>
+
+<%= form_for(@note, :class => "form", :page => "whtever", :html => {:multipart => true}) do |f| %>
+  <ul class="media-list">
+    <li class="media">
+      <a class="pull-left" href="#" style="padding-top:12px;">
+        <img class="media-object img-rounded" src="<%= current_user.avatar_url %>" width="64" height="64">
+        <p class="pagination-centered"><%= current_user.first_name %></p>
+      </a>
+      <div class="media-body">
+        <%= f.text_area :text,:rows => 4, :class => "span12", :placeholder => "Type your message here..."%>
+        <div class="actions">
+          <%= f.submit "Add Note", :class => "btn btn-inverse", :phase => @phase %>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :post_id, :value => @view_post.id %>
+<% end %>
+
+<ul class="media-list">
+  <% @notes.each do |note| %>
+  <li class="media">
+    <a class="pull-left" href="#">
+      <%= image_tag note.user.avatar, :class => "media-object img-rounded pagination-centered", :width => "64", :height => "64" %>
+      <p class="pagination-centered"><%= note.user.first_name %></p>
+      
+    </a>
+    <div class="media-body">
+      <p><%= note.text %></p>
+    </div>
+  </li>
+    <% end %>
+</ul>
+
