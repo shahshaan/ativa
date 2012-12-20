@@ -41,9 +41,20 @@ class ProjectsController < ApplicationController
     end
 
     @upload = params[:upload]
-    if @upload == 'true'
+    
+    if @upload == 'post'
       @post = Post.new
+    elsif @upload == 'subpost'
+      @subpost = Subpost.new
+      @post_id = Post.find(params[:post_id]).id
     end
+    
+
+    # @subpost_upload = params[:subpost_upload]
+    # if @subpost_upload == "true"
+    #   @subpost = Subpost.new
+    #   @post_id = Post.find(params[:post_id]).id
+    # end
     
     
 
@@ -81,11 +92,7 @@ class ProjectsController < ApplicationController
 
     end
 
-    @subpost_upload = params[:subpost_upload]
-    if @subpost_upload == "true"
-      @subpost = Subpost.new
-      @post_id = Post.find(params[:post_id]).id
-    end
+
 
     respond_to do |format|
       format.html # show.html.erb
