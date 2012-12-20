@@ -1,4 +1,6 @@
 ProcessApp::Application.routes.draw do
+  resources :subposts
+
   resources :attachments
 
   resources :notes

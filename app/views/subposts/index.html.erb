@@ -1,0 +1,33 @@
+<h1>Listing subposts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>User</th>
+    <th>File</th>
+    <th>Post</th>
+    <th>Url</th>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @subposts.each do |subpost| %>
+  <tr>
+    <td><%= subpost.title %></td>
+    <td><%= subpost.user_id %></td>
+    <td><%= subpost.file %></td>
+    <td><%= subpost.post_id %></td>
+    <td><%= subpost.url %></td>
+    <td><%= subpost.message %></td>
+    <td><%= link_to 'Show', subpost %></td>
+    <td><%= link_to 'Edit', edit_subpost_path(subpost) %></td>
+    <td><%= link_to 'Destroy', subpost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Subpost', new_subpost_path %>

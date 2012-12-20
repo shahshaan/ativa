@@ -44,7 +44,14 @@ class AttachmentsController < ApplicationController
 
     respond_to do |format|
       if @attachment.save
-        format.html { redirect_to @attachment, notice: 'Attachment was successfully created.' }
+        format.html { redirect_to project_url(  @attachment.post.project.id,
+                                                attachment_id: @attachment.id, 
+                                                attachment_partial: 'view',
+                                                page: 'view',
+                                                phase: @attachment.post.phase,
+                                                post_id: @attachment.post.id,
+                                                notice: 'Attachment was successfully created.' )
+        }
         format.json { render json: @attachment, status: :created, location: @attachment }
       else
         format.html { render action: "new" }

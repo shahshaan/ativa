@@ -1,0 +1,35 @@
+asdf
+<%= @post_id %>
+<%= form_for(@subpost, :class => "form", :page => "whtever", :html => {:multipart => true}) do |f| %>
+  <ul class="media-list">
+    <li class="media">
+      <a class="pull-left" href="#" style="padding-top:12px;">
+        <img class="media-object img-rounded" src="<%= current_user.avatar_url %>" width="64" height="64">
+        <p class="pagination-centered"><%= current_user.first_name %></p>
+      </a>
+      <div class="media-body">
+        <h4 class="media-heading">
+          <div class="control-group">
+            <div class="controls span12">
+              <%= f.text_field :title, :placeholder => "Message Title", :value => "", :class => "span2" %>
+              <small><%= Time.now.strftime("%m/%d/%y at %I:%M%P") %></small>
+            </div>
+          </div>
+        </h4>
+        <%= f.text_area :message,:rows => 4, :class => "span12", :placeholder => "Type your message here..."%>
+        <div class="row-fluid">
+          <span class="input-prepend"><span class="add-on">http://</span></span>
+          <input class="span3" id="prependedInput" type="text" name="post[url]" placeholder="www.example.com">
+          or
+          <%= f.file_field :file, :class => "span3" %>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "Add Message", :class => "btn btn-inverse", :phase => @phase %>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
+  <%= f.hidden_field :post_id, :value => @post_id %>
+<% end %>

@@ -1,4 +1,9 @@
-<%= @attachment.title %>
+
+<% if @attachment.message.size != 0 %>
+	<div class="well">
+	  <%= @attachment.message %>
+	</div>
+<% end -%>
 
 <% if @attachment.file.present? %>
 	<div class="row-fluid">
@@ -8,3 +13,4 @@
 <% if @attachment.url.present? %>
 	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @attachment.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
 <% end %>
+

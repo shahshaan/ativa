@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @subpost.title %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @subpost.user_id %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= @subpost.file %>
+</p>
+
+<p>
+  <b>Post:</b>
+  <%= @subpost.post_id %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @subpost.url %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @subpost.message %>
+</p>
+
+
+<%= link_to 'Edit', edit_subpost_path(@subpost) %> |
+<%= link_to 'Back', subposts_path %>

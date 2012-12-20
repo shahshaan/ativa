@@ -1,20 +1,78 @@
 
+<!-- Phase title -->
+  <h2>
+    <%= @phase.capitalize %> Phase 
+    <small>
+      <% if @upload == 'true' || @subpost_upload == 'true' %>
+        <%= link_to "cancel", project_url(:page => @page, :phase => @phase, :upload => '') %>
+      <% else %>
+        <%= link_to "add call", project_url(:page => @page, :phase => @phase, :upload => 'true') %>
+      <% end -%>
+    </small>
+  </h2>
+<!-- end -->
 
-<h2><%= @phase.capitalize %> Phase <small><%= link_to "upload", project_url(:page => @page, :phase => @phase, :upload => 'true') %></small></h2>
-
-<% if @upload == 'true' %>
-  <div class="row-fluid">
-    <div class="span12">
-        <%= render "projects/pages/upload" %>
+<!-- Renders uploaders -->
+  <% if @upload == 'true' %>
+    <div class="row-fluid">
+      <div class="span12">
+          <%= render "projects/pages/upload" %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+
+  <!-- Renders the new subpost uploader -->
+    <% if @subpost_upload == 'true' %>
+      <div class="row-fluid">
+        <div class="span12">
+            <%= render "projects/pages/subpost_upload" %>
+        </div>
+      </div>
+    <% end %>
+  <!-- end -->
+
+<!-- end -->
 
 <br>
 
-<!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
 <ul class="media-list">
-  <% @posts.each do |post| %>
+  <li class="media">
+    <a class="pull-left" href="#">
+      <%= image_tag Post.last.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
+      <p class="pagination-centered">Shaan</p>
+      
+    </a>
+    <div class="media-body">
+      <span class="row-fluid">
+        <a href="" class="span6"><h4 class="media-heading">Title of Post <small>12/12/12</small></h4></a>
+        <a href="#" class="span1 offset5"><i class="icon-plus icon-large"></i></a>
+      </span>
+      <p>-</p>
+      <ul class="media-list">
+        <!-- sub post -->
+          <li class="media">
+            <a class="pull-left" href="#">
+              <%= image_tag Post.last.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
+              <p class="pagination-centered">Shaan</p>            
+            </a>
+            <div class="media-body">
+              <a href=""><h4 class="media-heading">Title of Sub-Post <small>12/12/12</small></h4></a>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </li>
+        <!-- sub post <end> -->
+      </ul>
+    </div>
+  </li>
+</ul>
+
+<% @posts.each do |post| %>
+<ul class="media-list">
   <li class="media">
     <a class="pull-left" href="#">
       <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
@@ -22,20 +80,56 @@
       
     </a>
     <div class="media-body">
-      <a href="<%= project_url(:page => "view", :post_id => post.id, :phase => post.phase) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
+      <span class="row-fluid">
+        <a href="" class="span8"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
+        <a href="<%= project_url(:page => @page, :phase => @phase, :subpost_upload => 'true', :post_id => post.id) %>" class="span1 offset3"><i class="icon-plus icon-large"></i></a>
+      </span>
       <p><%= post.message %></p>
-      <p>
-        <% if post.attachment? %>
-          <%= post.attachment.file.filename %>
-          |
-          <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
-          <%= link_to "Download", post.attachment_url %>
-        <% end %>  
-      </p>
+      <!-- sub posts -->
+      <% post.subposts.each do |subpost| %>
+        <ul class="media-list">
+          <li class="media">
+            <a class="pull-left" href="#">
+              <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
+              <p class="pagination-centered">Shaan</p>            
+            </a>
+            <div class="media-body">
+              <a href=""><h4 class="media-heading"><%= subpost.title %><small>12/12/12</small></h4></a>
+              <p><%= subpost.message %></p>
+            </div>
+          </li>
+        </ul>
+      <% end -%>
+      <!-- sub posts <end> --> 
     </div>
   </li>
-    <% end %>
 </ul>
+<% end %>
+
+<!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
+  <ul class="media-list">
+    <% @posts.each do |post| %>
+    <li class="media">
+      <a class="pull-left" href="#">
+        <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
+        <p class="pagination-centered"><%= post.user.first_name %></p>
+        
+      </a>
+      <div class="media-body">
+        <a href="<%= project_url(:page => "view", :post_id => post.id, :phase => post.phase) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
+        <p><%= post.message %></p>
+        <p>
+          <% if post.attachment? %>
+            <%= post.attachment.file.filename %>
+            |
+            <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
+            <%= link_to "Download", post.attachment_url %>
+          <% end %>  
+        </p>
+      </div>
+    </li>
+      <% end %>
+  </ul>
 <!-- end -->
 
 

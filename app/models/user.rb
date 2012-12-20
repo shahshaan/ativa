@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :notes
+  has_many :subposts
 
   has_secure_password
   validates_presence_of :password, :on => :create

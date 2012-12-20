@@ -40,8 +40,11 @@ class ProjectsController < ApplicationController
       @posts = @posts.where(:phase => @phase).sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 
-    @post = Post.new
     @upload = params[:upload]
+    if @upload == 'true'
+      @post = Post.new
+    end
+    
     
 
     if params[:current_phase].present? && current_user.admin?
@@ -76,6 +79,12 @@ class ProjectsController < ApplicationController
         @attachment = Attachment.find(params[:attachment_id])
       end
 
+    end
+
+    @subpost_upload = params[:subpost_upload]
+    if @subpost_upload == "true"
+      @subpost = Subpost.new
+      @post_id = Post.find(params[:post_id]).id
     end
 
     respond_to do |format|

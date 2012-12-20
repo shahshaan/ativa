@@ -7,26 +7,26 @@
 	</div>	
 </div>
 
-<%= @attachment_show %>
-
 <% if @view_post.message.present? %>
 	<div class="row-fluid">
 		<div class="span12">
-			<%= @view_post.message %>
+			<h5><%= @view_post.message %></h5>
 		</div>
 	</div>
 	<br>
 <% end %>
 
-<ul class="nav nav-tabs">
-  <% @view_post.attachments.each do |attachment| %>
-    <% if attachment.id == @attachment.id then attachment_active = 'active' end %>
-    <li class="<%= attachment_active %>">
-      <%= link_to attachment.title, project_url(:page => 'view', :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'view', :attachment_id => attachment.id) %>
-    </li>
-  <% end -%>
-  <li class="<%= if @attachment_partial == 'upload' then "active" end %>"><a href="<%= project_url(:page => "view", :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'upload') %>"><i class="icon-plus"></i></a></li>
-</ul>
+<!-- Tabs for each attachment -->
+  <ul class="nav nav-tabs">
+    <% @view_post.attachments.each do |attachment| %>
+      <% if attachment.id == @attachment.id then attachment_active = 'active' end %>
+      <li class="<%= attachment_active %>">
+        <%= link_to attachment.title, project_url(:page => 'view', :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'view', :attachment_id => attachment.id) %>
+      </li>
+    <% end -%>
+    <li class="<%= if @attachment_partial == 'upload' then "active" end %>"><a href="<%= project_url(:page => "view", :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'upload') %>"><i class="icon-plus"></i></a></li>
+  </ul>
+<!-- end -->
 
 <% if @attachment_partial %>
   <div class="row-fluid">

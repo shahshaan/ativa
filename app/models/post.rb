@@ -9,9 +9,17 @@ class Post < ActiveRecord::Base
 
   has_many :attachments
 
+  has_many :subposts
+
   mount_uploader :attachment, AttachmentUploader
 
   after_update :set_post_last_updated
+
+  before_create :insert_underscore_in_message
+
+  def insert_underscore_in_message
+    self.message ||= "-"
+  end
 
   def set_post_last_updated
     project = Project.find(self.project_id)
