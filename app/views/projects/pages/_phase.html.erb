@@ -26,7 +26,7 @@
 
 <br>
 
-
+<!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
 <% @posts.each do |post| %>
 <ul class="media-list">
   <li class="media">
@@ -37,11 +37,11 @@
     </a>
     <div class="media-body">
       <span class="row-fluid">
-        <a href="<%= project_url(:page => "post_view", :post_id => post.id, :phase => post.phase) %>" class="span8"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small> <i class="icon-share-alt"></i></h4></a>
+        <a href="<%= project_url(:page => "post_view", :post_id => post.id, :phase => post.phase) %>" class="span11"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
 
-        <a href="<%= project_url(:page => @page, :phase => @phase, :upload => 'subpost', :post_id => post.id) %>" class="span1 offset3"><i class="icon-plus icon-large"></i></a>
+        <a href="<%= project_url(:page => @page, :phase => @phase, :upload => 'subpost', :post_id => post.id) %>" class="span1"><i class="icon-plus icon-large"></i></a>
       </span>
-      <p><%= post.message %></p>
+      <p class="span11"><%= post.message %></p>
       <!-- sub posts -->
       <% post.subposts.each do |subpost| %>
         <ul class="media-list">
@@ -71,30 +71,5 @@
 </ul>
 <% end %>
 
-<!-- Posts by users (see http://twitter.github.com/bootstrap/components.html#media and scroll to media objects) -->
-  <ul class="media-list">
-    <% @posts.each do |post| %>
-    <li class="media">
-      <a class="pull-left" href="#">
-        <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
-        <p class="pagination-centered"><%= post.user.first_name %></p>
-        
-      </a>
-      <div class="media-body">
-        <a href="<%= project_url(:page => "view", :post_id => post.id, :phase => post.phase) %>"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
-        <p><%= post.message %></p>
-        <p>
-          <% if post.attachment? %>
-            <%= post.attachment.file.filename %>
-            |
-            <%= link_to "View", project_url(:page => "view", :post_id => post.id) %>
-            <%= link_to "Download", post.attachment_url %>
-          <% end %>  
-        </p>
-      </div>
-    </li>
-      <% end %>
-  </ul>
-<!-- end -->
 
 

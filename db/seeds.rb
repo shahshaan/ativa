@@ -15,15 +15,15 @@ admins = [
 			{:first_name => 'Shaan', :last_name => 'Shah', email: 'shaan@perfectsearchmedia.com'},
 			{:first_name => 'Stanton', :last_name => 'Coville', email: 'stanton@perfectsearchmedia.com'},
 			{:first_name => 'Joel', :last_name => 'Benway', email: 'joel@perfectsearchmedia.com'},
-			{:first_name => 'PSD', :last_name => '', email: 'psm@perfectsearchmedia.com'}
+			{:first_name => 'Conor', :last_name => 'Keenan', email: 'conor@perfectsearchmedia.com'}
 ]
 
 admins.each do |admin|     
   Admin.create 	first_name:    			admin[:first_name], 
   				last_name:    			admin[:last_name],
                	email:   				admin[:email],
-               	password:   			admin[:first_name].downcase,
-               	password_confirmation: 	admin[:first_name].downcase
+               	password:   			'perfect1',
+               	password_confirmation: 	'perfect1'
 end
 
 puts 'adding dummy projects'
@@ -31,12 +31,10 @@ puts 'adding dummy projects'
 Project.destroy_all
 
 projects = [
-	{:name => "Cogent Data Solutions", :active => true},
-	{:name => "The Big Montage", :active => true},
-	{:name => "Soul'd", :active => true},
-	{:name => "Derick Dermatology", :active => false},
-	{:name => "Shalewater Solutions", :active => false},
-	{:name => "LAX Camp", :active => false }
+	{:name => "Perfect Search Design", :active => true},
+	{:name => "Sugarfoots", :active => true},
+	{:name => "Owl Metals Inc.", :active => true},
+	{:name => "Soul'd", :active => false}
 ]
 
 projects.each do |project|     
@@ -49,21 +47,11 @@ puts 'Adding posts to every project and every phase'
 Post.destroy_all
 
 posts = [
-	{:title => 'Message Title', :user_id => User.first.id, :message => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-	{:title => 'Message Title Number Two', :user_id => User.last.id, :message => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"},
-	{:title => '', :user_id => User.last.id, :message => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum."},
-	{:title => 'Title That Is Very Very Very Very Freaking Long', :user_id => User.first.id, :message => "Lorem ipsum dolor sit amet, consectetur adipisicing elit"}
+	{ 	
+		:title => 'Welcome to Ativa!', 
+		:user_id => User.first.id, 
+		:message => "This project management tool is built to be intuitive. If you want to add a post, simply push the plus sign. To add a call, hit the 'add call' link. If there is anything not working correctly please notify me at shaan@perfectsearchmedia.com or you can often find me at the ping pong table."
+	}
 ]
 
 
