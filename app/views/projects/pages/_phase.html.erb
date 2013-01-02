@@ -30,14 +30,15 @@
 <% @posts.each do |post| %>
 <ul class="media-list">
   <li class="media">
-    <a class="pull-left" href="#">
+    <a class="pull-left" href="<%= user_url(post.user) %>">
       <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
       <p class="pagination-centered"><%= post.user.first_name %></p>
       
     </a>
     <div class="media-body">
       <span class="row-fluid">
-        <a href="<%= project_url(:page => "post_view", :post_id => post.id, :phase => post.phase) %>" class="span8"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h4></a>
+        <a href="<%= project_url(:page => "post_view", :post_id => post.id, :phase => post.phase) %>" class="span8"><h4 class="media-heading"><%= post.title %> <small><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small> <i class="icon-share-alt"></i></h4></a>
+
         <a href="<%= project_url(:page => @page, :phase => @phase, :upload => 'subpost', :post_id => post.id) %>" class="span1 offset3"><i class="icon-plus icon-large"></i></a>
       </span>
       <p><%= post.message %></p>
@@ -46,8 +47,8 @@
         <ul class="media-list">
           <li class="media">
             <a class="pull-left" href="#">
-              <%= image_tag post.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
-              <p class="pagination-centered">Shaan</p>            
+              <%= image_tag subpost.user.avatar_url, :class => "media-object img-rounded pagination-centered", :width => "60" %>
+              <p class="pagination-centered"><%= subpost.user.first_name %></p>            
             </a>
             <div class="media-body">
               <a href="<%= project_url(:page => "subpost_view", :subpost_id => subpost.id, :phase => post.phase) %>"><h4 class="media-heading"><%= subpost.title %><small>12/12/12</small></h4></a>
@@ -57,7 +58,7 @@
                   <%= subpost.file.file.filename %>
                   |
                   <%= link_to "View", project_url(:page => "subpost_view", :subpost_id => subpost.id, :phase => post.phase) %>
-                  <%= link_to 'Download'%>
+                  <%= link_to 'Download', subpost.file_url%>
                 <% end %>  
               </p>
             </div>

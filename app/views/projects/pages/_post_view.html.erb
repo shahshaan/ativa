@@ -21,10 +21,10 @@
     <% @view_post.attachments.each do |attachment| %>
       <% if attachment.id == @attachment.id then attachment_active = 'active' end %>
       <li class="<%= attachment_active %>">
-        <%= link_to attachment.title, project_url(:page => 'view', :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'view', :attachment_id => attachment.id) %>
+        <%= link_to attachment.title, project_url(:page => 'post_view', :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'view', :attachment_id => attachment.id) %>
       </li>
     <% end -%>
-    <li class="<%= if @attachment_partial == 'upload' then "active" end %>"><a href="<%= project_url(:page => "view", :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'upload') %>"><i class="icon-plus"></i></a></li>
+    <li class="<%= if @attachment_partial == 'upload' then "active" end %>"><a href="<%= project_url(:page => "post_view", :post_id => @view_post.id, :phase => @view_post.phase, :attachment_partial => 'upload') %>"><i class="icon-plus"></i></a></li>
   </ul>
 <!-- end -->
 

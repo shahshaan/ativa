@@ -47,7 +47,7 @@ class AttachmentsController < ApplicationController
         format.html { redirect_to project_url(  @attachment.post.project.id,
                                                 attachment_id: @attachment.id, 
                                                 attachment_partial: 'view',
-                                                page: 'view',
+                                                page: 'post_view',
                                                 phase: @attachment.post.phase,
                                                 post_id: @attachment.post.id,
                                                 notice: 'Attachment was successfully created.' )

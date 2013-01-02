@@ -11,6 +11,7 @@
 	</div>
 <% end %>
 <% if @attachment.url.present? %>
+	<div class="pagination-centered"><%= link_to @attachment.url, "http://#{@attachment.url}" %></div>
 	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @attachment.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
 <% end %>
 
