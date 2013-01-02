@@ -49,7 +49,7 @@ Post.destroy_all
 posts = [
 	{ 	
 		:title => 'Welcome to Ativa!', 
-		:user_id => User.first.id, 
+		:user_id => Admin.first.id, 
 		:message => "This project management tool is built to be intuitive. If you want to add a post, simply push the plus sign. To add a call, hit the 'add call' link. If there is anything not working correctly please notify me at shaan@perfectsearchmedia.com or you can often find me at the ping pong table."
 	}
 ]
