@@ -9,6 +9,8 @@ class Project < ActiveRecord::Base
   before_save :default_values
 
   after_create :initial_posts
+
+  validates_presence_of :name, :message => "The least you could do is provide a name for the project"
   
 
   def default_values

@@ -1,7 +1,58 @@
+<div id="loginbox">
+<br><br><br><br><br>
+
+<% if @project.errors.any? %>
+  <div class="row-fluid">
+    <div class="span4"></div>
+    <div class="span4">
+      <% @project.errors.messages.each do |msg| %>
+        <div class="alert alert-error">
+            <p><%= msg.last.last%></p>
+        </div>
+      <% end %>
+    </div>
+    <div class="span4"></div>
+  </div>
+<% end %>
 
 
-<h1>New project</h1>
+<div class="row-fluid">
+  <div class="span4"></div>
+  <div class="span4">
+    <h1 class="pagination-centered">Add Project</h1>
+  </div>
+  <div class="span4"></div>
+</div>
 
-<%= render 'form' %>
+<br>
 
-<%= link_to 'Back', projects_path %>
+<div>
+  <%= form_tag projects_url, :class => "form", :style => "" do %>
+
+    <div class="row-fluid">
+      <div class="span4"></div>
+      <div class="span4">
+        <div class="control-group">
+          <div class="controls">
+            <%= text_field_tag :name, "", :placeholder => "Project Name", :value => "", :class => "span12" %>
+          </div>
+        </div>
+      </div>
+      <div class="span4"></div>
+    </div>
+
+    <div class="row-fluid">
+      <div class="span4"></div>
+      <div class="span4">
+        <div class="submitbox">
+          <div class="actions">
+            <%= submit_tag 'Create Account', :class => "btn btn-block btn-primary btn-large" %>
+          </div>
+        </div>
+      </div>
+      <div class="span4"></div>
+    </div>
+
+  <%end%>
+
+</div>
