@@ -29,6 +29,8 @@ ProcessApp::Application.routes.draw do
 
   post '/project_status' => 'projects#status', :as => :project_status
 
+  get '/template' => 'pages#template', :as => :template
+
   
 
   # The priority is based upon order of creation:
