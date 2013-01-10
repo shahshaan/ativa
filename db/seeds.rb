@@ -22,8 +22,8 @@ admins.each do |admin|
   Admin.create 	first_name:    			admin[:first_name], 
   				last_name:    			admin[:last_name],
                	email:   				admin[:email],
-               	password:   			'perfect1',
-               	password_confirmation: 	'perfect1'
+               	password:   			admin[:first_name],
+               	password_confirmation: 	admin[:first_name]
 end
 
 puts 'adding dummy projects'
