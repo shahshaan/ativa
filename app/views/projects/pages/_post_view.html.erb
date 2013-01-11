@@ -1,11 +1,12 @@
 <div class="row-fluid">
 	<div class="span11">
-		<h2><%= @view_post.title %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
+		<h2 class="active"><%= link_to @view_post.title, project_url(:page => "post_view", :post_id => @view_post.id, :phase => @view_post.phase) %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
 	</div>
 	<div class="span1">
 		<%if @view_post.attachment? %><h2 class="span1"><small><%= link_to "download", @view_post.attachment_url%></small></h2><% end %>
 	</div>	
 </div>
+
 
 <% if @view_post.message.present? %>
 	<div class="row-fluid">
@@ -39,18 +40,20 @@
 <!-- end -->
 
 
-
-<% if @view_post.attachment? %>
-	<div class="row-fluid">
-		<iframe class="span12" src="<%= @view_post.attachment_url %>" height="800"frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
-	</div>
+<% if @attachment_partial == nil %>
+  <% if @view_post.attachment? %>
+    <div class="row-fluid">
+      <iframe class="span12" src="<%= @view_post.attachment_url %>" height="800"frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+    </div>
+  <% end %>
+  <% if @view_post.url.present? %>
+    <iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
+  <% end %>
 <% end %>
-<% if @view_post.url.present? %>
-	<iframe height="1000" width="100%" frameBorder="0" src="http://<%= @view_post.url %>">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>
-<% end %>
 
-<br>
+<br><br><br>
 
+<!-- Shows the message box to add notes -->
 <%= form_for(@note, :class => "form", :page => "whtever", :html => {:multipart => true}) do |f| %>
   <ul class="media-list">
     <li class="media">
@@ -69,7 +72,9 @@
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :post_id, :value => @view_post.id %>
 <% end %>
+<!-- end -->
 
+<!-- Shows the list of added notes -->
 <ul class="media-list">
   <% @notes.each do |note| %>
   <li class="media">
@@ -84,4 +89,5 @@
   </li>
     <% end %>
 </ul>
+<!-- end -->
 
