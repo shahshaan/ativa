@@ -20,6 +20,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.json
   def show
+    @back = request.env['HTTP_REFERER']
+
     @phase = params[:phase]
     @upload = "as"
 
@@ -97,6 +99,10 @@ class ProjectsController < ApplicationController
 
     if @page == 'subpost_view'
       @subpost = Subpost.find(params[:subpost_id])
+    end
+
+    if @page == 'errors'
+      @errors = params[:errors].to_a
     end
 
 

@@ -54,6 +54,7 @@ class AttachmentsController < ApplicationController
         }
         format.json { render json: @attachment, status: :created, location: @attachment }
       else
+        
         format.html { render action: "new" }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
       end

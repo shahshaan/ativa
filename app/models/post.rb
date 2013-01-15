@@ -17,6 +17,9 @@ class Post < ActiveRecord::Base
 
   before_create :insert_underscore_in_message
 
+  validates_presence_of :title
+  validates_presence_of :message
+
   def insert_underscore_in_message
     self.message ||= "-"
   end

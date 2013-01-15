@@ -47,7 +47,8 @@ class PostsController < ApplicationController
         format.html { redirect_to project_url(@post.project_id, :page => 'phase', :phase => @post.phase), notice: "#{@post.phase}" }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { render action: "new" }
+        errors = @post.errors.messages
+        format.html { redirect_to project_url(@post.project_id, :page => 'errors', :errors => errors) }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

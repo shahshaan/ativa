@@ -1,0 +1,28 @@
+<div class="row-fluid">
+	<div class="span1"></div>
+	<div class="span10">
+		<a href="<%= @back %>"><button class="btn btn-large btn-block btn-warning" type="button"><i class="icon-arrow-left"></i> Go Back</button></a>
+	</div>
+	<div class="span1"></div>
+</div>
+
+<br />
+
+<div class="row-fluid">
+	<div class="span3"></div>
+	<div class="span7">
+		<h3 class=""><ul>
+			Please fix the following errors...
+			<% @errors.each do |error| %>
+				<li><%= error.first.capitalize %> <%= error.last.last %></li>	
+			<% end -%>
+		</ul></h3>
+	</div>
+	<div class="span2"></div>
+</div>
+
+
+
+
+
+

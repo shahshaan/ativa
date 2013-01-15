@@ -4,6 +4,8 @@ class Subpost < ActiveRecord::Base
   belongs_to :post
   belongs_to :user
 
+  validates_presence_of :title
+
   mount_uploader :file, FileUploader
   
 end
