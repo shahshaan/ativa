@@ -15,14 +15,14 @@ class Project < ActiveRecord::Base
 
   def default_values
     if self.active == nil then self.active = true end
-    self.current_phase ||= 'onboarding'
+    self.current_phase ||= 'creative'
     self.post_last_updated ||= Time.now
   end
 
   def initial_posts
   	Post.create(	:title => 'New Project Created',
   					:message => "Welcome! A project for #{self.name} has been created.",
-  					:phase => 'onboarding',
+  					:phase => 'creative',
   					:project_id => self.id,
   					:user_id => User.find_by_email("shaan@perfectsearchmedia.com").id
   	)

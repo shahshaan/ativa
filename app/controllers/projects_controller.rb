@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
     @upload = "as"
 
     @project = Project.find(params[:id])
-    @phases = ['onboarding','creative','design','development','implementation']
+    @phases = phases
 
     @page = params[:page]
     @page = 'phase' unless @page.present?
@@ -55,16 +55,7 @@ class ProjectsController < ApplicationController
     elsif @upload == 'subpost'
       @subpost = Subpost.new
       @post = Post.find(params[:post_id])
-    end
-    
-
-    # @subpost_upload = params[:subpost_upload]
-    # if @subpost_upload == "true"
-    #   @subpost = Subpost.new
-    #   @post_id = Post.find(params[:post_id]).id
-    # end
-    
-    
+    end    
 
     if params[:current_phase].present? && current_user.admin?
        @project.update_attributes(:current_phase => params[:current_phase])

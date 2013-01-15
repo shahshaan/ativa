@@ -1,3 +1,25 @@
+== Ativa: A Project Management Tool for a Design/Development Project
+
+== Making Changes
+
+changing the five phases along the process
+  1.  @ app/controllers/application_controller.rb
+      - Change the 'phases' method with to the appropriate phase names
+  2.  @ app/helpers/projects_helper.rb
+      - Change the phases for the 'progress_bar_level' method
+  3.  If you're change the name of the initial phase:
+      @ app/models/project.rb
+      - Change the phase in the 'initial_posts' method
+
+
+
+  External libraries that the application depends on. Also includes the plugins
+  subdirectory. If the app has frozen rails, those gems also go here, under
+  vendor/rails/. This directory is in the load path.
+
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create

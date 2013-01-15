@@ -1,9 +1,9 @@
 module ProjectsHelper
 
 	def progress_bar_level(phase)
-		if phase == 'onboarding'
+		if phase == 'creative'
 			level = 12
-		elsif phase == 'creative'
+		elsif phase == 'wireframe'
 			level = 32.5	
 		elsif phase == 'design'
 			level = 53.1	

@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
     return password
   end
 
+  def phases
+    return ['creative','wireframe','design','development','implementation']
+  end
+
 end
