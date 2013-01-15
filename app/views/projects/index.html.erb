@@ -3,6 +3,18 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
 
+<!-- Notice Bar -->
+<div class="row-fluid">
+  <div class="span12">
+    <% if @notice %>
+      <div class="alert alert-info">
+        <%= @notice %>
+      </div>
+    <% end -%>
+  </div>
+</div>
+<!-- Notice Bar <end> -->
+
 <div class="row-fluid">
   <div class="span1"></div>
   <div class="span10"><h2>Active Projects<small><%= link_to " Add project", new_project_path %></small></h2></div>

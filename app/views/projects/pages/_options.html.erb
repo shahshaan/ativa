@@ -57,15 +57,25 @@
 </div>
 
 <div class="row-fluid">
-	<div class="span3"></div>
-	<% if @project.active? %>
-		<%= button_to "Completed!", project_status_url(:active => "false", :id => @project.id), :class => "btn btn-large btn-success span6", :method => 'POST' %>
-	<% else %>
-		<%= button_to "Activate", project_status_url(:active => "true", :id => @project.id), :class => "btn btn-large btn-primary span6", :method => 'POST' %>
-	<% end %>
+  <div class="span3"></div>
+  <div class="span6">
+  	<% if @project.active? %>
+  		<%= button_to "Completed!", project_status_url(:active => "false", :id => @project.id), :class => "btn btn-large btn-success btn-block", :method => 'POST' %>
+  	<% else %>
+  		<%= button_to "Activate", project_status_url(:active => "true", :id => @project.id), :class => "btn btn-large btn-primary btn-block", :method => 'POST' %>
+  	<% end %>
+  </div>
 	<div class="span3"></div>
 </div>
-
 <!-- Project status <end> -->
 
+<!-- Delete project -->
 
+<div class="row-fluid">
+  <div class="span3"></div>
+  <div class="span6"><%= link_to "<button class='btn btn-large btn-block btn-danger' type='button'>Delete Project</button>".html_safe, project_url(@project.id), :confirm => "Oh snap, I hope you're aware this action will delete this project and everything that goes with it? Be careful, my friend...be careful.", :method => 'DELETE' %></div>
+  <div class="span3"></div>
+</div>
+
+
+<!-- Delete project <end> -->

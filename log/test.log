@@ -1,0 +1,154 @@
+Connecting to database specified by database.yml
+Unable to load step, underlying cause No such file to load -- step 
+
+ /usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:312:in `depend_on'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:225:in `require_dependency'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:767:in `try_to_load_dependency'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:782:in `block in require_fixture_classes'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:779:in `each'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:779:in `require_fixture_classes'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:762:in `fixtures'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/test_helper.rb:5:in `<top (required)>'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/unit/admin_test.rb:1:in `require'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/unit/admin_test.rb:1:in `<top (required)>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:10:in `require'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:9:in `each'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:4:in `select'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+Connecting to database specified by database.yml
+Unable to load step, underlying cause No such file to load -- step 
+
+ /usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:317:in `rescue in depend_on'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:312:in `depend_on'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activesupport-3.2.8/lib/active_support/dependencies.rb:225:in `require_dependency'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:767:in `try_to_load_dependency'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:782:in `block in require_fixture_classes'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:779:in `each'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:779:in `require_fixture_classes'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/activerecord-3.2.8/lib/active_record/fixtures.rb:762:in `fixtures'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/test_helper.rb:10:in `<class:TestCase>'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/test_helper.rb:5:in `<top (required)>'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/functional/admins_controller_test.rb:1:in `require'
+/Users/shaanshah/psm/Design Clients/Internal - perfectsearchdesign.com/ativa/test/functional/admins_controller_test.rb:1:in `<top (required)>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:10:in `require'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:10:in `block (2 levels) in <main>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:9:in `each'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:9:in `block in <main>'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:4:in `select'
+/usr/local/rvm/gems/ruby-1.9.3-p286/gems/rake-10.0.2/lib/rake/rake_test_loader.rb:4:in `<main>'
+  [1m[36m (0.5ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  rollback transaction

@@ -8,21 +8,21 @@
 
 <br />
 
+
+
 <div class="row-fluid">
-	<div class="span3"></div>
-	<div class="span7">
-		<h3 class=""><ul>
-			Please fix the following errors...
-			<% @errors.each do |error| %>
-				<li><%= error.first.capitalize %> <%= error.last.last %></li>	
-			<% end -%>
-		</ul></h3>
+	<div class="span1"></div>
+	<div class="span10">
+		<div class="alert alert-block">
+		  <button type="button" class="close" data-dismiss="alert">&times;</button>
+		  <h4>Eek! I think you may have made a mistake</h4>
+		  <% @errors.each do |error| %>
+		  	<li><%= error.first.capitalize %> <%= error.last.last %></li>	
+		  <% end -%>
+		</div>
 	</div>
-	<div class="span2"></div>
+	<div class="span1"></div>
 </div>
-
-
-
 
 
 

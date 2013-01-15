@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
   def index
     @projects = Project.all
 
+    @notice = params[:notice]
+
     projects = Project.scoped
     @active_projects = projects.where(:active => true).sort! { |a,b| b.post_last_updated <=> a.post_last_updated }
     @completed_projects = projects.where(:active => false)
@@ -169,10 +171,11 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1.json
   def destroy
     @project = Project.find(params[:id])
+    project_name = @project.name
     @project.destroy
 
     respond_to do |format|
-      format.html { redirect_to projects_url }
+      format.html { redirect_to projects_url(:notice => "You have successfully deleted the #{project_name} project. I hope you meant to do that.") }
       format.json { head :no_content }
     end
   end
