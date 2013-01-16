@@ -54,8 +54,8 @@ class AttachmentsController < ApplicationController
         }
         format.json { render json: @attachment, status: :created, location: @attachment }
       else
-        
-        format.html { render action: "new" }
+        errors = @attachment.errors.messages
+        format.html { redirect_to project_url(@attachment.post.project_id, :page => 'errors', :errors => errors) }
         format.json { render json: @attachment.errors, status: :unprocessable_entity }
       end
     end

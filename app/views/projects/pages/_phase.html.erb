@@ -41,7 +41,9 @@
 
         <a href="<%= project_url(:page => @page, :phase => @phase, :upload => 'subpost', :post_id => post.id) %>" class="span1"><i class="icon-plus icon-large"></i></a>
       </span>
-      <p class="span11"><%= post.message %></p>
+      <p class="span11"><%= post.message %>
+
+      </p>
       <!-- sub posts -->
       <% post.subposts.each do |subpost| %>
         <ul class="media-list">
