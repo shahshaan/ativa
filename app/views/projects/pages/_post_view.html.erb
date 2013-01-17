@@ -2,9 +2,20 @@
 	<div class="span11">
 		<h2 class="active"><%= link_to @view_post.title, project_url(:page => "post_view", :post_id => @view_post.id, :phase => @view_post.phase) %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
 	</div>
+  <!-- Setting the download/view link when viewing a post/call -->  
 	<div class="span1">
-		<%if @view_post.attachment? %><h2 class="span1"><small><%= link_to "download", @view_post.attachment_url%></small></h2><% end %>
+    <h2 class="span1"><small>
+        <% if @attachment_partial == nil %>
+          <%if @view_post.attachment? %>
+              <% download_view_link = @view_post.attachment_url%>
+          <% end %>
+        <% elsif @attachment_partial == 'view' %>
+          <% download_view_link = @attachment.file_url%>
+        <% end %>
+        <%= if download_view_link then link_to "download/view", download_view_link end %>
+    </small></h2>
 	</div>	
+  <!-- Setting the download/view link when viewing a post/call <end> -->
 </div>
 
 
