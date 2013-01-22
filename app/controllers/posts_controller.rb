@@ -74,10 +74,12 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    post_phase = @post.phase
+    post_project_id = @post.project.id
     @post.destroy
 
     respond_to do |format|
-      format.html { redirect_to posts_url }
+      format.html { redirect_to project_url(:id => post_project_id, :page => "phase", :phase => post_phase) }
       format.json { head :no_content }
     end
   end
