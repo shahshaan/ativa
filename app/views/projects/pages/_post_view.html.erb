@@ -2,17 +2,17 @@
 	<div class="span10">
 		<h2 class="active"><%= link_to @view_post.title, project_url(:page => "post_view", :post_id => @view_post.id, :phase => @view_post.phase) %> <small><%= @view_post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></small></h2>
 	</div>
-  <!-- Setting the download/view link when viewing a post/call or attachment -->  
+  <!-- Logic for  download/view link when viewing a post/call or attachment -->
+  <% if @attachment_partial == nil %>
+    <%if @view_post.attachment? %>
+        <% download_view_link = @view_post.attachment_url%>
+    <% end %>
+  <% elsif @attachment_partial == 'view' %>
+    <% download_view_link = @attachment.file_url%>
+  <% end %>
+  <!-- Setting the download/view link when viewing a post/call or attachment <end> -->
+
 	<div class="span2">
-    <!-- <h2 class="span1"><small> -->
-        <% if @attachment_partial == nil %>
-          <%if @view_post.attachment? %>
-              <% download_view_link = @view_post.attachment_url%>
-          <% end %>
-        <% elsif @attachment_partial == 'view' %>
-          <% download_view_link = @attachment.file_url%>
-        <% end %>
-    <!-- </small></h2> -->
     <ul class="nav nav-pills pull-right">
       <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -20,15 +20,22 @@
           <b class="caret"></b>
         </a>
         <ul class="dropdown-menu">
-          <li><%= if download_view_link then link_to "download/view", download_view_link end %></li>
-          <li><%= link_to "delete call", post_url(@view_post.id), :confirm => "Oh snap, I hope you're aware this action will delete this call and everything that goes with it? Be careful, my friend...be careful.", :method => 'DELETE' %></li>
-          <li><a href="#">delete attachment</a></li>
+          <li>
+            <%= if download_view_link then link_to "download/view", download_view_link end %>
+          </li>
+          <li>
+            <%= link_to "delete call", post_url(@view_post.id), :confirm => "Oh snap, I hope you're aware this action will delete this call and everything that goes with it? Be careful, my friend...be careful.", :method => 'DELETE' %>
+          </li>
+          <li>
+            <%= if @attachment_partial == 'view' then link_to "delete attachment", attachment_url(@attachment.id), :confirm => "This action will delete this attachment. I hope you know what you're doing!", :method => 'DELETE' end %>
+          </li>
         </ul>
       </li>
     </ul>
 	</div>
-  <!-- Setting the download/view link when viewing a post/call or attachment <end> -->
 </div>
+
+
 
 
 <% if @view_post.message.present? %>

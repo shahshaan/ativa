@@ -13,17 +13,17 @@ changing the five phases along the process
 
 == Task List
 
-to do
-  * delete a call
+Things I Need To Do
   * edit the title of a call
   * edit the title of an attachment
   * make the title of attachment the title of the message if the title is left blank
   * add notes to each attachment during the call
   * push a call recap that includes note from each page
 
-recently finished
+Items Recently Added
   * add button to allow a pdf or image to go full screen for each attachment
-  
+  * added an options button while viewing a post/call, which allows you to (1) download/view an attachment or post/call, (2) delete an attachment or a post/call
+
 
 
 == Welcome to Rails

@@ -81,10 +81,13 @@ class AttachmentsController < ApplicationController
   # DELETE /attachments/1.json
   def destroy
     @attachment = Attachment.find(params[:id])
+    project_id = @attachment.post.project.id
+    phase = @attachment.post.phase
+    post_id = @attachment.post.id
     @attachment.destroy
 
     respond_to do |format|
-      format.html { redirect_to attachments_url }
+      format.html { redirect_to project_url(:id => project_id, :page => 'post_view', :phase => phase, :post_id => post_id) }
       format.json { head :no_content }
     end
   end
