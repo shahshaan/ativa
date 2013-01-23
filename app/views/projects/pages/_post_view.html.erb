@@ -86,7 +86,7 @@
 <br><br><br>
 
 <!-- Shows the message box to add notes -->
-<%= form_for(@note, :class => "form", :page => "whtever", :html => {:multipart => true}) do |f| %>
+<%= form_for(@note, :class => "form", :html => {:multipart => true}) do |f| %>
   <ul class="media-list">
     <li class="media">
       <a class="pull-left" href="#" style="padding-top:12px;">
@@ -103,6 +103,9 @@
   </ul>
   <%= f.hidden_field :user_id, :value => current_user.id %>
   <%= f.hidden_field :post_id, :value => @view_post.id %>
+  <% if @attachment_partial == 'view' %>
+    <%= f.hidden_field :attachment_id, :value => @attachment.id %>
+  <% end %>
 <% end %>
 <!-- end -->
 

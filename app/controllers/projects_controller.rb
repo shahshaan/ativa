@@ -82,12 +82,14 @@ class ProjectsController < ApplicationController
     if @page == 'post_view'
       @view_post = Post.find(params[:post_id])
       @note = Note.new
-      @notes = Note.where(:post_id => @view_post.id)
+      @notes = Note.where(:post_id => @view_post.id, :attachment_id => nil)
       @attachment = Attachment.new
       @attachment_partial = params[:attachment_partial]
       if @attachment_partial == 'view'
         @attachment = Attachment.find(params[:attachment_id])
+        @notes = Note.where(:attachment_id => @attachment.id)
       end
+      @notes = @notes.sort! { |a,b| b.updated_at <=> a.updated_at }
     end
 
     if @page == 'subpost_view'
