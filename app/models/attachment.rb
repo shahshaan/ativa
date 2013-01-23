@@ -7,16 +7,24 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
-  validates_presence_of :title
+  validates_presence_of :title, :if => :attachment_not_attached
 
   before_create :add_title_based_off_attachment
 
+  def attachment_not_attached
+    if self.url != "" || self.file.file != nil
+      return false
+    else
+      return true
+    end
+  end
+
   def add_title_based_off_attachment
-  	if_worked = 'false'
-  	if self.title == ""
-  		if_worked = 'true'
-  	end
-  	raise if_worked
+    if self.title == ""
+      if self.url then replacement_title = self.url end
+      if self.file.file != nil then replacement_title = self.file.file.filename end
+      self.title = replacement_title
+    end
   end
 
 end
