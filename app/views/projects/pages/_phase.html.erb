@@ -4,7 +4,7 @@
     <%= @phase.capitalize %> Phase 
     <small>
       <% if @upload != nil %>
-        <%= link_to "cancel", project_url(:page => @page, :phase => @phase, :upload => '') %>
+        <%= link_to "cancel", project_url(:page => @page, :phase => @phase) %>
       <% else %>
         <%= link_to "add call", project_url(:page => @page, :phase => @phase, :upload => 'post') %>
       <% end -%>

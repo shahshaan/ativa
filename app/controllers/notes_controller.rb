@@ -44,7 +44,7 @@ class NotesController < ApplicationController
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to project_url(:id => @note.post.project.id, :page => 'view', :post_id => @note.post.id), notice: 'Note was successfully created.' }
+        format.html { redirect_to project_url(:id => @note.post.project.id, :page => 'post_view', :post_id => @note.post.id, :phase => @note.post.phase), notice: 'Note was successfully created.' }
         format.json { render json: @note, status: :created, location: @note }
       else
         format.html { render action: "new" }

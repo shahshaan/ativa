@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115232648) do
+ActiveRecord::Schema.define(:version => 20130123173155) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20130115232648) do
     t.string   "post_id"
     t.string   "user_id"
     t.text     "text"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "attachment_id"
   end
 
   create_table "posts", :force => true do |t|

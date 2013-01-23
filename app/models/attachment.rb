@@ -3,6 +3,8 @@ class Attachment < ActiveRecord::Base
 
   belongs_to :post
 
+  has_many :notes
+
   mount_uploader :file, FileUploader
 
   validates_presence_of :title
