@@ -9,4 +9,14 @@ class Attachment < ActiveRecord::Base
 
   validates_presence_of :title
 
+  before_create :add_title_based_off_attachment
+
+  def add_title_based_off_attachment
+  	if_worked = 'false'
+  	if self.title == ""
+  		if_worked = 'true'
+  	end
+  	raise if_worked
+  end
+
 end
