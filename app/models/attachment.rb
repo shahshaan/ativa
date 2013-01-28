@@ -22,7 +22,11 @@ class Attachment < ActiveRecord::Base
   def add_title_based_off_attachment
     if self.title == ""
       if self.url then replacement_title = self.url end
-      if self.file.file != nil then replacement_title = self.file.file.filename end
+      if self.file.file != nil
+        file_name = self.file.file.filename
+        title_array = file_name.match(/(.*)\.(.*)/)[1..2]
+        replacement_title = title_array[0].gsub(/'_'/, ' ')
+      end
       self.title = replacement_title
     end
   end

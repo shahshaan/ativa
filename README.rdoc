@@ -17,6 +17,8 @@ Things I Need To Do
   * edit the title of a call
   * edit the title of an attachment
   * push a call recap that includes note from each page
+  * fix overview page to show all recent changes in order
+  * allow a user to see their activity on their my account page
 
 Items/Functionality Recently Added
   * add button to allow a pdf or image to go full screen for each attachment
