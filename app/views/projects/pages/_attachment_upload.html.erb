@@ -29,4 +29,5 @@
     </li>
   </ul>
   <%= f.hidden_field :post_id, :value => @view_post.id %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
 <% end %>

@@ -24,11 +24,11 @@
       <h2>My Activity</h2>
     </div>
     <tbody>
-      <% @user.posts.each do |post| %>
+      <% @posts.each do |post| %>
         <tr>
           <td class="span2"><%= post.updated_at.strftime("%m/%d/%y at %I:%M%P") %></td>
           <td class="span7">
-            <a href="<%= project_url(:id => post.project.id,:page => "view", :post_id => post.id) %>"><%= post.title %><small class="muted"> <%= post.snippet %></small></a>
+            <a href="<%#= project_url(:id => post.project.id,:page => "view", :post_id => post.id) %>"><%= post.title %><small class="muted"> <%= post.snippet %></small></a>
           </td>
           <td class="span3">
             <%= link_to post.attachment_snippet, "" %>
@@ -38,5 +38,7 @@
     </tbody>
   </table>
 <% end %>
+
+
 
 

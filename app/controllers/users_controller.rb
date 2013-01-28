@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find(params[:id])
+    @posts = Post.where(:user_id => @user.id).sort! { |a,b| b.updated_at <=> a.updated_at }
 
     respond_to do |format|
       format.html # show.html.erb

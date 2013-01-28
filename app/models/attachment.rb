@@ -1,5 +1,5 @@
 class Attachment < ActiveRecord::Base
-  attr_accessible :file, :message, :title, :url, :post_id
+  attr_accessible :file, :message, :title, :url, :post_id, :user_id
 
   belongs_to :post
 
