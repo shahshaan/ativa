@@ -19,6 +19,12 @@ Things I Need To Do
   * push a call recap that includes note from each page
   * fix overview page to show all recent changes in order
   * allow a user to see their activity on their my account page
+  * remove http:// when adding urls to attachments or calls
+  * add the project name to the my account recent activity
+  * add new attachments to recent activity in my account
+  * add calendar (talk to joel more in depth)
+  * add a "summary" so that when a call is done we can see all the notes according to each attachment
+  * fix the times for posts
 
 Items/Functionality Recently Added
   * add button to allow a pdf or image to go full screen for each attachment
