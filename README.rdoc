@@ -31,6 +31,7 @@ Items/Functionality Recently Added
   * added an options button while viewing a post/call, which allows you to (1) download/view an attachment or post/call, (2) delete an attachment or a post/call
   * add notes to each attachment or post
   * make the title of the attachment the title of the filename/website if the title is left blank
+  * view call summary (click call summary in the options dropdown)
 
 == Welcome to Rails
 
