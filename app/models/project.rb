@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
 
-  attr_accessible :active, :name, :current_phase, :post_last_updated
+  attr_accessible :active, :name, :current_phase, :post_last_updated, :contract
 
   has_many :posts
 
@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
   after_create :initial_posts
 
   validates_presence_of :name, :message => "The least you could do is provide a name for the project"
+
+  mount_uploader :contract, ContractUploader
   
 
   def default_values

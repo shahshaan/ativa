@@ -1,0 +1,11 @@
+<%= form_for(@project, :html => {:multipart => true}) do |f| %>
+
+  <div class="field">
+    <%= f.file_field :contract %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update Contract", :class => "btn btn-inverse", :phase => @phase %>
+  </div>
+<% end %>
+
+<iframe class="span12" src="<%= @project.contract %>" height="800"frameborder="0">Unfortunately, your browser does not support the use of iframes. Please upgrade to a different browswer like Google Chrome or Mozilla Firefox</iframe>

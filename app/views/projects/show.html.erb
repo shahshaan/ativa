@@ -7,7 +7,8 @@
           <%= link_to phase, project_url(:page => "phase", :phase => phase), :class => "active" %>
         </li>
       <% end %>
-    <ul class="<%= if @page == "options" then 'active' end %>"><%= link_to 'Options', project_url(:page => 'options') %></ul>  
+    <ul class="<%= if @page == "options" then 'active' end %>"><%= link_to 'Options', project_url(:page => 'options') %></ul>
+    <ul class="<%= if @page == "contract" then 'active' end %>"><%= link_to 'Contract', project_url(:page => 'contract') %></ul>  
 </div>
 <!-- end -->
 
