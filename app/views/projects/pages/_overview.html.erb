@@ -19,11 +19,8 @@
           <td  class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
           <td class="span1"><%= post.updated_at.strftime("%I:%M%P") %></td>
           <td class="span7">
-            <a href="#">
-              <%= post.title %>
-              <small class="muted"> <%= post.snippet %></small>
-
-            </a>
+            <%= link_to post.title, project_url(:page => 'post_view', :phase => @phase, :post_id => post.id) %>
+            <small class="muted"> <%= post.snippet %></small>
           </td>
           <td class="span3"><%= link_to post.attachment_snippet, "" %></td>
         </tr>
@@ -42,10 +39,8 @@
           <td  class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
           <td class="span1"><%= post.updated_at.strftime("%m/%d/%y") %></td>
           <td class="span7">
-            <a href="<%=  %>">
-              <%= post.title %>
-              <small class="muted"> <%= post.snippet %></small>
-            </a>
+            <%= link_to post.title, project_url(:page => 'post_view', :phase => @phase, :post_id => post.id) %>
+            <small class="muted"> <%= post.snippet %></small>
           </td>
           <td class="span3"><%= post.attachment_snippet %></td>
         </tr>
@@ -61,13 +56,11 @@
     <tbody>
       <% @posts_older_than_yesterday.each do |post| %>
         <tr>
-          <td  class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
+          <td class="span1"><a href="<%= post.id %>"><%= post.user.first_name %></a></td>
           <td class="span1"><%= post.updated_at.strftime("%I:%M%P") %></td>
           <td class="span7">
-            <a href="#">
-              <%= post.title %>
-              <small class="muted"> <%= post.snippet %></small>
-            </a>
+            <%= link_to post.title, project_url(:page => 'post_view', :phase => @phase, :post_id => post.id) %>
+            <small class="muted"> <%= post.snippet %></small>
           </td>
           <td class="span3"><%= post.attachment_snippet %></td>
         </tr>
